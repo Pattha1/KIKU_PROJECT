@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="x-icon" href="img/ICON.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Langar&display=swap" rel="stylesheet">
+    <title>KIKU - Login</title>
+    <style>
+        body {
+            font-family: 'Langar', Arial, sans-serif;
+            background-color: #FFC909;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            width: 300px;
+            padding: 20px;
+            background-color: #FFC909;
+            border: 1px solid #c39a09;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 40px;
+            text-align: center;
+            color: #9E400C;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #9E400C;
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .txt_forget {
+            font-size: 10px;
+            text-align: right;
+            color: #9E400C;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .txt_forget:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            font-family: 'Langar', system-ui;
+            background-color: #9E400C;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            font-family: 'Langar', system-ui;
+            background-color: #7E3300;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form action="login.php" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <div class="txt_forget">FORGET YOUR PASSWORD?</div>
+
+            <button type="submit" onclick="window.location.href='main.html'">SUBMIT</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

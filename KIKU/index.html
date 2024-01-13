@@ -1,19 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link rel="icon" type="x-icon" href="img/ICON.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Langar&display=swap" rel="stylesheet">
     <title>KIKU</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        body {
+            font-family: 'Langar', system-ui;
+            background-color: #FFC909;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #FFC909;
+            padding-top: 90px;
+            text-align: center;
+        }
+
+        .logo-container {
+            display: contents;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #img_01 {
+            width: 500px;
+            height: 320px;
+            margin-right: 10px;
+            z-index: 1;
+        }
+
+        #img_02 {
+            width: 500px;
+            height: 320px;
+            margin-right: 10px;
+            padding-top: 25px;
+            z-index: 0;
+            position: absolute;
+            animation: wing 0.3s infinite alternate linear;
+        }
+
+        @keyframes wing {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0.9;
+            }
+        }
+
+        h1 {
+            font-family: 'Langar', system-ui;
+            font-size: 45px;
+            color: #9E400C;
+            text-align: center;
+            padding-top: 15px;
+            margin: 0;
+        }
+
+
+        main {
+            padding: 20px 0px 0px 10px;
+            text-align: center;
+        }
+
+        .cta-buttons button {
+            padding: 13px 40px;
+            font-size: 28px;
+            margin-right: 20px;
+        }
+
+        .login-btn {
+            font-family: 'Langar', system-ui;
+            border-radius: 8px;
+            background-color: #9E400C;
+            color: white;
+            border: none;
+        }
+
+        .signup-btn {
+            font-family: 'Langar', system-ui;
+            margin-left: 20px;
+            border-radius: 8px;
+            background-color: #9E400C;
+            color: white;
+            border: none;
+        }
+
+
+
+
+
+
+
+
+        /* ----------------------------responsive - 768------------------------------- */
+        @media (max-width: 768px) {
+
+            /* ความกว้างไม่เกิน 768px */
+            header {
+                background-color: #FFC909;
+                padding-top: 60px;
+                text-align: center;
+            }
+
+            .logo-container img {
+                width: 400px;
+                height: 230px;
+                margin-right: 10px;
+            }
+
+            h1 {
+                font-family: 'Langar', system-ui;
+                font-size: 38px;
+                color: #9E400C;
+                text-align: center;
+                padding-top: 20px;
+                margin: 0;
+            }
+
+            main {
+                padding: 13px;
+                text-align: center;
+            }
+
+            .cta-buttons button {
+                padding: 10px 29px;
+                font-size: 18px;
+                margin-right: 20px;
+            }
+        }
+
+
+
+
+
+
+        /* ----------------------------responsive - 425------------------------------- */
+        @media (max-width: 425px) {
+
+            /* ความกว้างไม่เกิน 425px */
+            .logo-container img {
+                width: 280px;
+                height: 180px;
+                margin-right: 10px;
+            }
+
+            h1 {
+                font-family: 'Langar', system-ui;
+                font-size: 35px;
+                color: #9E400C;
+                text-align: center;
+                padding-top: 20px;
+                margin: 0;
+            }
+
+            main {
+                padding: 15px;
+                text-align: center;
+            }
+
+            .cta-buttons button {
+                padding: 6px 20px;
+                font-size: 18px;
+                margin-right: 20px;
+            }
+
+
+        }
+
+
+
+
+
+
+        /* ----------------------------responsive - 320------------------------------- */
+        @media (max-width: 320px) {
+
+            /* ความกว้างไม่เกิน 320px */
+            header {
+                background-color: #FFC909;
+                padding-top: 60px;
+                text-align: center;
+            }
+
+            .logo-container img {
+                width: 280px;
+                height: 170px;
+                margin-right: 10px;
+            }
+
+            h1 {
+                font-family: 'Langar', system-ui;
+                font-size: 30px;
+                color: #9E400C;
+                text-align: center;
+                padding-top: 20px;
+                margin: 0;
+            }
+
+            main {
+                padding: 13px;
+                text-align: center;
+            }
+
+            .cta-buttons button {
+                padding: 8px 20px;
+                font-size: 18px;
+                margin-right: 13px;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <header>
         <div class="logo-container">
-            <img id="img_02" src="02.png" alt="logo02">
-            <img id="img_01" src="01.png" alt="logo01">
+            <img id="img_02" src="img/02.png" alt="logo02">
+            <img id="img_01" src="img/01.png" alt="logo01">
         </div>
     </header>
 
@@ -22,12 +235,14 @@
     </div>
     <main>
         <div class="cta-buttons">
-            <button class="login-btn">Login</button>
-            <button class="signup-btn">Sign Up</button>
+            <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
+            <button class="signup-btn" onclick="window.location.href='sign up.html'">Sign Up</button>
+
         </div>
     </main>
 
 
     <script src="script.js"></script>
 </body>
+
 </html>

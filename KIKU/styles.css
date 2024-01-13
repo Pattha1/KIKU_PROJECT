@@ -1,4 +1,5 @@
 body {
+    font-family: 'Langar', system-ui;
     background-color: #FFC909;
     font-family: Arial, sans-serif;
     margin: 0;
@@ -9,10 +10,9 @@ header {
     background-color: #FFC909;
     padding-top: 90px;
     text-align: center;
-    
 }
 
-.logo-container{
+.logo-container {
     display: contents;
     align-items: center;
     justify-content: center;
@@ -24,36 +24,39 @@ header {
     margin-right: 10px;
     z-index: 1;
 }
+
 #img_02 {
     width: 500px;
     height: 320px;
     margin-right: 10px;
+    padding-top: 25px;
     z-index: 0;
     position: absolute;
-    animation: dao 1s infinite alternate linear;
+    animation: wing 0.3s infinite alternate linear;
 }
 
-@keyframes dao{
-    0%{
-            opacity: 0;
+@keyframes wing {
+    0% {
+        opacity: 0;
     }
-    100%{
-            opacity: 0.9;
+
+    100% {
+        opacity: 0.9;
     }
-  }
+}
 
 h1 {
     font-family: 'Langar', system-ui;
     font-size: 45px;
     color: #9E400C;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 15px;
     margin: 0;
 }
 
 
 main {
-    padding: 45px;
+    padding: 20px 0px 0px 10px;
     text-align: center;
 }
 
@@ -89,6 +92,7 @@ main {
 
 /* ----------------------------responsive - 768------------------------------- */
 @media (max-width: 768px) {
+
     /* ความกว้างไม่เกิน 768px */
     header {
         background-color: #FFC909;
@@ -101,7 +105,7 @@ main {
         height: 230px;
         margin-right: 10px;
     }
-    
+
     h1 {
         font-family: 'Langar', system-ui;
         font-size: 38px;
@@ -110,12 +114,12 @@ main {
         padding-top: 20px;
         margin: 0;
     }
-    
+
     main {
         padding: 13px;
         text-align: center;
     }
-    
+
     .cta-buttons button {
         padding: 10px 29px;
         font-size: 18px;
@@ -130,13 +134,14 @@ main {
 
 /* ----------------------------responsive - 425------------------------------- */
 @media (max-width: 425px) {
+
     /* ความกว้างไม่เกิน 425px */
     .logo-container img {
         width: 280px;
         height: 180px;
         margin-right: 10px;
     }
-    
+
     h1 {
         font-family: 'Langar', system-ui;
         font-size: 35px;
@@ -145,18 +150,18 @@ main {
         padding-top: 20px;
         margin: 0;
     }
-    
+
     main {
         padding: 15px;
         text-align: center;
     }
-    
+
     .cta-buttons button {
         padding: 6px 20px;
         font-size: 18px;
         margin-right: 20px;
     }
-    
+
 
 }
 
@@ -167,6 +172,7 @@ main {
 
 /* ----------------------------responsive - 320------------------------------- */
 @media (max-width: 320px) {
+
     /* ความกว้างไม่เกิน 320px */
     header {
         background-color: #FFC909;
@@ -179,7 +185,7 @@ main {
         height: 170px;
         margin-right: 10px;
     }
-    
+
     h1 {
         font-family: 'Langar', system-ui;
         font-size: 30px;
@@ -188,12 +194,12 @@ main {
         padding-top: 20px;
         margin: 0;
     }
-    
+
     main {
         padding: 13px;
         text-align: center;
     }
-    
+
     .cta-buttons button {
         padding: 8px 20px;
         font-size: 18px;
@@ -201,6 +207,78 @@ main {
     }
 }
 
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+/* ---------------------------------------------------------------     log in    ------------------------------------------------------------- */
+login {
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    width: 300px;
+    padding: 20px;
+    background-color: #FFC909;
+    border: 1px solid #c39a09;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #9E400C;
+}
+
+form {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-family: Arial, sans-serif;
+    margin-bottom: 5px;
+    color: #9E400C;
+    margin: 10px;
+}
+
+input {
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.txt_forget {
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    text-align: right;
+    color: #9E400C;
+}
+
+
+button {
+    margin-top: 25px;
+    background-color: #9E400C;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #9E400C;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
 
 
 
@@ -209,11 +287,59 @@ main {
 
 
 
+/* ---------------------------------------------------------------     sign up    ------------------------------------------------------------- */
+main {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.signup-container {
+    width: 300px;
+    padding: 20px;
+    background-color: #FFC909;
+    border: 1px solid #c39a09;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+h2 {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #9E400C;
+}
 
+form {
+    font-family: Arial, sans-serif;
+    margin-bottom: 5px;
+    color: #9E400C;
+    margin: 10px;
+}
 
+label {
+    text-align: left;
+    font-family: Arial, sans-serif;
+    margin-bottom: 5px;
+    color: #9E400C;
+    margin: 10px;
+}
 
+input {
+    padding: 8px;
+    margin-bottom: 10px;
+}
 
+button {
+    margin-top: 25px;
+    background-color: #9E400C;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
 
-
+button:hover {
+    background-color: #9E400C;
+}
