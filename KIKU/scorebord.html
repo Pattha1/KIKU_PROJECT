@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="img/ICON.png" alt="Favicon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Langar&display=swap" rel="stylesheet">
+    <title>KIKU - SCOREBOARD</title>
+    <style>
+        body {
+            font-family: 'Langar', system-ui;
+            background-color: #FFC909;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .txt_score {
+            margin: 0px 0px 10px 0px;
+            width: 80%;
+            font-size: 30px;
+            color: #9E400C;
+        }
+
+        .scoreborad {
+            background-color: #fff;
+            width: 80%;
+            height: 60%;
+            border-radius: 12px;
+            margin: 3px 0px 20px 0px;
+            overflow: hidden;
+        }
+
+        .score_table {
+            color: #9E400C;
+            width: 100%;
+            font-size: 20px;
+            border-collapse: collapse;
+        }
+
+        .score_table th,
+        .score_table td {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .exit_buttons button {
+            color: #fff;
+            padding: 13px 40px;
+            font-size: 28px;
+            margin-right: 20px;
+        }
+
+        .exit {
+            font-size: 30px;
+            font-family: 'Langar', system-ui;
+            border-radius: 12px;
+            background-color: #9E400C;
+            color: white;
+            border: none;
+            padding: 8px 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="txt_score">SCOREBOARD</div>
+
+    <div class="scoreborad">
+        <table class="score_table">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>SCORE OF WIN</th>
+                    <th>WIN RATE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Row 1 -->
+                <tr>
+                    <td>1</td>
+                    <td>Player 1</td>
+                    <td>100</td>
+                    <td>75%</td>
+                </tr>
+                <!-- Row 2 -->
+                <tr>
+                    <td>2</td>
+                    <td>Player 2</td>
+                    <td>85</td>
+                    <td>60%</td>
+                </tr>
+                <!-- Row 3 -->
+                <tr>
+                    <td>3</td>
+                    <td>Player 3</td>
+                    <td>70</td>
+                    <td>50%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="exit_buttons">
+        <button class="exit" onclick="window.location.href='main.html'">Exit</button>
+    </div>
+
+    <script>
+    </script>
+</body>
+
+</html>

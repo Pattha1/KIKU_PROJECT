@@ -19,22 +19,21 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            /* Align items vertically */
             height: 100vh;
         }
 
         .profile-container {
-            margin-top: 0px;
+            margin: 55px 0px 0px 0px;
         }
 
         .profile-picture {
             border: 5px solid #7E3300;
             background-color: #ffffff;
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             overflow: hidden;
-            margin-bottom: 20px;
+            margin: 10px;
             cursor: pointer;
         }
 
@@ -46,11 +45,17 @@
         }
 
         .user-name {
-            font-size: 40px;
+            font-size: 30px;
             font-weight: bold;
             color: #7E3300;
             margin-bottom: 10px;
-            /* Add margin below user-name */
+        }
+
+        .txt_bord{
+            width: 44%;
+            font-size: 20px;
+            color: #7E3300;
+            margin: 15px 0px -15px 0px;
         }
 
         .bord-container {
@@ -67,17 +72,36 @@
             justify-content: center;
             align-items: center;
             border-radius: 12px;
-            width: 180px;
-            height: 180px;
+            width: 150px;
+            height: 150px;
             background-color: #d9d9d9;
             margin: 10px 30px 0px 30px;
             margin-bottom: 40px;
         }
 
+        .txt_bord_size {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin: -33px 10px 20px 10px;
+        }
+
+        .txt_bord3x3,
+        .txt_bord4x4,
+        .txt_bord5x5 {
+            color: #9E400C;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            width: 150px;
+            margin: 0px 30px 20px 30px;
+        }
+
         .buttons button {
             padding: 13px 40px;
-            font-size: 28px;
-            margin: 20px 40px 0px 0px;
+            font-size: 20px;
+            margin: 0px 40px 20px 0px;
         }
 
         .scorebord-btn {
@@ -106,22 +130,30 @@
         <div class="profile-picture" onclick="toggleProfilePicture()">
             <img id="img_profile1" src="img/03.png" alt="Profile Picture">
         </div>
-        <div class="user-name">nameeeee</div>
     </div>
 
+    <div class="txt_profile">
+        <div class="user-name">user-name</div>
+    </div>
+
+    <div class="txt_bord">Bord</div>
+
     <div class="bord-container">
-        <div class="txt_bord">
-            Bord
-        </div>
         <div class="bord_3">
-            <img id="img_bord3x3" src="img/07.png" alt="bord3x3 Picture" width="130px" height="130px">
+            <img id="img_bord3x3" src="img/07.png" alt="bord3x3 Picture" width="100px" height="100px">
         </div>
         <div class="bord_4">
-            <img id="img_bord4x4" src="img/08.png" alt="bord4x4 Picture" width="130px" height="130px">
+            <img id="img_bord4x4" src="img/08.png" alt="bord4x4 Picture" width="100px" height="100px">
         </div>
         <div class="bord_5">
-            <img id="img_bord5x5" src="img/09.png" alt="bord5x5 Picture" width="130px" height="130px">
+            <img id="img_bord5x5" src="img/09.png" alt="bord5x5 Picture" width="100px" height="100px">
         </div>
+    </div>
+
+    <div class="txt_bord_size">
+        <div class="txt_bord3x3">3X3</div>
+        <div class="txt_bord4x4">4X4</div>
+        <div class="txt_bord5x5">5X5</div>
     </div>
 
     <div class="buttons">
