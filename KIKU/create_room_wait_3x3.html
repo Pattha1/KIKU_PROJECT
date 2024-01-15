@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="img/ICON.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Langar&display=swap" rel="stylesheet">
+    <title>KIKU - Create Room Wait</title>
+    <style>
+        body {
+            font-family: 'Langar', system-ui;
+            background-color: #FFC909;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .txt_score {
+            margin: 0px 0px 100px 0px;
+            width: 80%;
+            font-size: 30px;
+            color: #9E400C;
+        }
+
+        .bord-container {
+            display: flex;
+            justify-content: center;
+            width: 60%;
+            margin: 10px;
+        }
+
+        .profile_img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            width: 130px;
+            height: 130px;
+            border: 5px solid #7E3300;
+            background-color: #ffffff;
+            margin: 10px 400px 0px 30px;
+        }
+
+        .member_img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            width: 130px;
+            height: 130px;
+            border: 5px solid #000000;
+            background-color: #ffffff;
+            margin: 10px 30px 0px 30px;
+
+        }
+
+        .txt-profile {
+            display: flex;
+            justify-content: center;
+            width: 60%;
+            margin: 10px;
+        }
+
+        .profile_txt {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 30px;
+            border-radius: 8px;
+            color: #7E3300;
+            background-color: #ffffff;
+            margin: -5px 450px 50px 30px;
+        }
+
+        .member_txt {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 30px;
+            border-radius: 8px;
+            color: #ffffff;
+            background-color: #000000;
+            margin: -5px 30px 50px 30px;
+        }
+
+        .buttons button {
+            padding: 13px 40px;
+            font-size: 20px;
+            margin: 20px 40px 20px 40px;
+        }
+
+        .reload-btn {
+            font-family: 'Langar', system-ui;
+            border-radius: 8px;
+            background-color: #7E3300;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+        }
+
+        .play-btn {
+            font-family: 'Langar', system-ui;
+            margin-left: 20px;
+            border-radius: 8px;
+            background-color: #7E3300;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+        }
+
+        .playb{
+            width: 27%;
+            font-size: 14px;
+            text-align: right;
+            color: #7E3300;
+            margin: -3px 0px 10px 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="txt_score">CREATE ROOM</div>
+
+    <div class="bord-container">
+        <div class="profile_img">
+            <img src="img/03.png" alt="profile_Picture" width="100px" height="100px">
+        </div>
+        <div class="member_img">
+            <img src="img/05.png" alt="member_Picture" width="100px" height="100px">
+        </div>
+    </div>
+
+    <div class="txt-profile">
+        <div class="profile_txt">NAME</div>
+        <div class="member_txt">???</div>
+    </div>
+
+    <div class="buttons">
+        <button class="reload-btn" onclick="window.location.href='create_room_wait_3x3.html'">RELOAD</button>
+        <button class="play-btn" onclick="window.location.href='game_play_3x3.html'">Play</button>
+    </div>
+
+    <div class="playb" onclick="window.location.href='main.html'"> << PLAY BACK</div>
+
+    
+    <script>
+    </script>
+</body>
+
+</html>
