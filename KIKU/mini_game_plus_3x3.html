@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Langar&display=swap" rel="stylesheet">
-    <title>KIKU - Play</title>
+    <title>KIKU - Mini Game</title>
     <style>
         body {
             font-family: 'Langar', system-ui;
@@ -129,16 +129,76 @@
             height: 100px;
             width: 100px;
         }
+
+        .popup-container {
+            width: 30%;
+            height: 40%;
+            border-radius: 8px;
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+        }
+
+        .mini-math{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 20%;
+            border-radius: 8px;
+            border: 2px solid #950303;
+            background-color: #B70303;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        #answer{
+            width: 100%;
+            height: 10%;
+        }
+
+        .popup-input {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3px;
+        }
+
+        .popup-button {
+            padding: 10px;
+            background-color: #B70303;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .jod{
+            width: 100%;
+            height: 10%;
+            font-size: 25px;
+            color: #B70303;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 0px;
+        }
+
     </style>
 </head>
 
 <body>
     <div class="bord-container">
         <div class="profile_img">
-            <img src="img/03.png" alt="profile_Picture" width="70px" height="70px">
+            <img onclick="window.location.href='win_page_3x3.html'" src="img/03.png" alt="profile_Picture" width="70px" height="70px">
         </div>
         <div class="member_img">
-            <img src="img/06.png" alt="member_Picture" width="70px" height="70px">
+            <img onclick="window.location.href='lose_page_3x3.html'" src="img/06.png" alt="member_Picture" width="70px" height="70px">
         </div>
     </div>
 
@@ -148,7 +208,7 @@
     </div>
 
     <div class="time">
-        <div class="time_to_play" onclick="window.location.href='mini_game_plus_3x3.html'">00:10</div>
+        <div class="time_to_play" onclick="showPopup()">00:10</div>
     </div>
 
     <div class="player">
@@ -173,72 +233,32 @@
         </div>
     </div>
 
+
+    <!-- Popup container -->
+    <div id="popup" class="popup-container">
+        <div class="mini-math">Quiz Math</div>
+        <div class="jod">4+10+12+9+7+3+1</div>
+        <label for="answer" class="popup-input"></label>
+        <input type="text" id="answer" class="popup-input"><br>
+        <button onclick="submitAnswer()" class="popup-button">Answer</button>
+    </div>
+
     <script>
-        var i = 0;
-        var flag = 0;
-        var audio;
-        var boxes = document.querySelectorAll(".square");
-        var content = new Array(boxes.length);
-        var result = document.querySelector(".result");
-        boxes.forEach((box, index) => {
-            box.addEventListener('click', () => {
-                if (flag === 1) return;
-                box.classList.add("res");
-                setTimeout(function () {
-                    box.classList.remove("res");
-                }, 100);
-                if (box.innerHTML === '') {
-                    box.innerHTML = (i % 2 === 0) ? 'X' : 'O';
-                    content[index] = box.innerHTML;
-                    check();
-                    tie();
-                    i++;
-                }
-            });
-        });
-        function tie() {
-            var count = 0;
-            content.forEach(cont => {
-                if (cont !== "") count++;
-            });
-            if (count === 9 && flag === 0) {
-                const result = document.querySelector(".result");
-                audio = new Audio("sounds/lose.wav");
-                audio.play();
-                result.innerHTML = ` Tie `;
-            }
-        }
-        function check() {
-            var list = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
-            for (var j = 0; j < 8; j++) {
-                if ((content[list[j][0]] === 'X' || content[list[j][0]] === 'O') && content[list[j][0]] === content[list[j][1]] && content[list[j][1]] === content[list[j][2]]) {
-                    flag = 1;
-                    audio = new Audio("sounds/win.wav");
-                    audio.play();
-                    const result = document.querySelector(".result");
-                    result.innerHTML = ` ${content[list[j][0]]} Won!! `;
-                    boxes[list[j][0]].classList.add("final");
-                    boxes[list[j][1]].classList.add("final");
-                    boxes[list[j][2]].classList.add("final");
-                    break;
-                }
-            }
+        // JavaScript functions
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
         }
 
-        function clearAll() {
-            flag = 0;
-            i = 0;
-            boxes.forEach((box) => {
-                box.classList.remove("final");
-                box.innerHTML = '';
-            });
-            content = new Array(boxes.length);
-            result = document.querySelector(".result");
-            result.innerHTML = ``;
+        function submitAnswer() {
+            // Get the user's answer from the input field
+            var userAnswer = document.getElementById('answer').value;
+
+            // Perform the necessary logic with the user's answer
+            // (You can add your own logic here)
+
+            // Close the popup
+            document.getElementById('popup').style.display = 'none';
         }
-
-
-
     </script>
 </body>
 
