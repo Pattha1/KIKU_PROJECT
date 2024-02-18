@@ -13,11 +13,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+
+    <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics-compat.js"></script>
-    <!-- Our stylesheet -->
+
+    <!-- Swal fire -->
     <link rel="stylesheet" type="text/css" href="index.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -34,7 +37,6 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-        
         }
         
         * {
@@ -70,14 +72,10 @@
             padding: 20px;
             padding-bottom: 50px;
             padding-top: 40px;
-
-
-            
         }
         
         #form_header {
             display: inline-block;
-            
             font-size: 50px;
             text-align: center;
             color: #9E400C;
@@ -98,23 +96,23 @@
             height: 100%;
             float: left;
         }
+        
         label {
             display: block;
             margin-bottom: 10px;
             color: #9E400C;
         }
+        
         input {
             width: 100%;
             height: 40px;
             padding: 8px;
             margin-bottom: 15px;
             box-sizing: border-box;
-        
         }
-
         
         #button_container {
-           /*  width: 100%;
+            /*  width: 100%;
             height: 10%;
             /* background-color: #9E400C; */
             margin-top: -5px;
@@ -123,8 +121,6 @@
             border-radius: 3px;
             letter-spacing: 1px;
             font-family: 'Langar', system-ui;
-
-
         }
         
         #button_container button {
@@ -147,10 +143,12 @@
             margin-top: 20px;
             font-family: 'Langar', system-ui;
         }
+        
         button:hover {
             font-family: 'Langar', system-ui;
             background-color: #7E3300;
         }
+        
         .alert {
             padding: 10px;
             margin-top: 20px;
@@ -182,16 +180,16 @@
 
             <div id="form_content_container">
                 <div id="form_content_inner_container">
-            <label for="username">Username:</label>
+                    <label for="username">Username:</label>
                     <input type="text" id="username" placeholder="username">
 
-            <label for="username">Email:</label>
+                    <label for="username">Email:</label>
                     <input type="email" id="email" placeholder="Email">
 
-            <label for="username">Password:</label>
+                    <label for="username">Password:</label>
                     <input type="password" id="password" placeholder="Password">
 
-            <label for="username">Confirm password:</label>
+                    <label for="username">Confirm password:</label>
                     <input type="password" id="confirm_password" placeholder="confirm password">
 
 

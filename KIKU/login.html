@@ -13,12 +13,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+
+    <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-check-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
-    <!-- Our stylesheet -->
+
+    <!-- Swal fire -->
     <link rel="stylesheet" type="text/css" href="index.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -93,20 +96,20 @@
             height: 100%;
             float: left;
         }
+        
         label {
             display: block;
             margin-bottom: 10px;
             color: #9E400C;
         }
+        
         input {
             width: 100%;
             height: 40px;
             padding: 8px;
             margin-bottom: 15px;
             box-sizing: border-box;
-        
         }
-
         
         #button_container {
             margin-top: -5px;
@@ -130,10 +133,12 @@
             margin-top: 20px;
             font-family: 'Langar', system-ui;
         }
+        
         button:hover {
             font-family: 'Langar', system-ui;
             background-color: #7E3300;
         }
+        
         .alert {
             padding: 10px;
             margin-top: 20px;
@@ -165,18 +170,18 @@
 
             <div id="form_content_container">
                 <div id="form_content_inner_container">
-            <!-- <label for="username">Username:</label>
+                    <!-- <label for="username">Username:</label>
                     <input type="text" id="username" placeholder="username"> -->
 
-                <label for="username">Email:</label>
-                        <input type="email" id="email" placeholder="Email">
+                    <label for="username">Email:</label>
+                    <input type="email" id="email" placeholder="Email">
 
-                <label for="username">Password:</label>
-                        <input type="password" id="password" placeholder="Password">
+                    <label for="username">Password:</label>
+                    <input type="password" id="password" placeholder="Password">
 
-                        <div id="button_container">
-                            <!-- <button onclick="login()">Login</button> -->
-                            <button onclick="login()">Login</button>
+                    <div id="button_container">
+                        <!-- <button onclick="login()">Login</button> -->
+                        <button onclick="login()">Login</button>
                     </div>
                     <div id="alert-container"></div>
                 </div>

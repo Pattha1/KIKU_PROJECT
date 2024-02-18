@@ -7,7 +7,7 @@ const firebaseConfig = {
     messagingSenderId: "428492797804",
     appId: "1:428492797804:web:d17f2f6a0162ceeef3a549",
     measurementId: "G-LE6BYXM09G"
-  };
+};
 firebase.initializeApp(firebaseConfig);
 
 
@@ -71,7 +71,7 @@ function register() {
                 width: 500,
             }).then(() => {
                 // Redirect to login page
-                location.href = "login.html";
+                location.href = "main.html";
             });
         })
         .catch((error) => {
@@ -156,37 +156,37 @@ function login() {
 
             // Create User data
             var user_data = {
-            last_login : Date.now()
+                last_login: Date.now()
             }
 
             // Push to Firebase Database
             database_ref.child('users/' + user.uid).update(user_data)
 
             // DOne
-            
+
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
                 text: 'Login complete',
 
-              }).then(() => {
+            }).then(() => {
                 location.href = "main.html";
-              })
+            })
 
         })
-            
-            
-        
-        
-        .catch((error) => {
-            // Firebase will use this to showAlert of its errors
-            const error_code = error.code;
-            const error_message = error.message;
 
-            if (error_code === 'auth/invalid-credential') {
-                showAlert('Your Email or password incorrect !!', 'error');
-            } 
-        });
+
+
+
+    .catch((error) => {
+        // Firebase will use this to showAlert of its errors
+        const error_code = error.code;
+        const error_message = error.message;
+
+        if (error_code === 'auth/invalid-credential') {
+            showAlert('Your Email or password incorrect !!', 'error');
+        }
+    });
 }
 
 //logout
@@ -200,22 +200,21 @@ btnLogout.addEventListener("click", function() {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "OK"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-            location.href = "login.html";
+            location.href = "index.html";
             firebase.auth().signOut();
             console.log("Logout Completed.");
         }
-      });
-      
+    });
+
 });
 
 //set nav ui
 firebase.auth().onAuthStateChanged((user) => {
-    if(user) {
+    if (user) {
         console.log("user :", user);
-    }
-    else {
+    } else {
         console.log("Unavaliable user");
     }
     setupUI(user);
