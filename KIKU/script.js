@@ -1,12 +1,15 @@
-// ใน script.js
-var firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+const firebaseConfig = {
+    apiKey: "AIzaSyDZaBdJL0g2Ae5ZKexkbq2KVNKhQcHAcIQ",
+    authDomain: "login-kiku.firebaseapp.com",
+    databaseURL: "https://login-kiku-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "login-kiku",
+    storageBucket: "login-kiku.appspot.com",
+    messagingSenderId: "428492797804",
+    appId: "1:428492797804:web:d17f2f6a0162ceeef3a549",
+    measurementId: "G-LE6BYXM09G"
 };
-
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+
+const auth = firebase.auth();
+const database = firebase.database();
