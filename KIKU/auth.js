@@ -14,8 +14,8 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const database = firebase.database();
 
+//-------------------------------------------register-------------------------------------------------------------------------------------------------------------------------------------
 
-// Set up our register function
 function register() {
     // Get all our input fields
     const email = document.getElementById('email').value;
@@ -84,51 +84,7 @@ function register() {
 }
 
 
-// Function to display alerts
-function showAlert(message, type) {
-    var alertContainer = document.getElementById('alert-container');
-    alertContainer.innerHTML = `<div class="alert ${type}">${message}</div>`;
-
-    // Clear the alert after a certain duration (e.g., 5 seconds)
-    setTimeout(() => {
-        alertContainer.innerHTML = '';
-    }, 5000);
-}
-
-// Validate Functions
-function validate_email(email) {
-    expression = /^[^@]+@\w+(\.\w+)+\w$/
-    if (expression.test(email) == true) {
-        // Email is good
-        return true
-    } else {
-        // Email is not good
-        return false
-    }
-}
-
-function validate_password(password) {
-    // Firebase only accepts lengths greater than 6
-    if (password < 6) {
-        return false
-    } else {
-        return true
-    }
-}
-
-function validate_field(field) {
-    if (field == null) {
-        return false
-    }
-
-    if (field.length <= 0) {
-        return false
-    } else {
-        return true
-    }
-}
-
-//login
+//-------------------------------------------login-------------------------------------------------------------------------------------------------------------------------------------
 function login() {
     // Get email and password
     const email = document.getElementById('email').value;
@@ -172,24 +128,76 @@ function login() {
             }).then(() => {
                 location.href = "main.html";
             })
+            user.updateProfile({
+                    displayName: username,
+                }).then(function() {
+                    console.log(user.displayName);
+                })
+                .catch(function(error) {
+                    // an error occured
+                });
+            console.log(user.displayName);
 
         })
-
-
-
 
     .catch((error) => {
         // Firebase will use this to showAlert of its errors
         const error_code = error.code;
         const error_message = error.message;
 
+
+
         if (error_code === 'auth/invalid-credential') {
             showAlert('Your Email or password incorrect !!', 'error');
         }
     });
 }
+//-------------------------------------------Function to display alerts-------------------------------------------------------------------------------------------------------------------------------------
+function showAlert(message, type) {
+    var alertContainer = document.getElementById('alert-container');
+    alertContainer.innerHTML = `<div class="alert ${type}">${message}</div>`;
 
-//logout
+    // Clear the alert after a certain duration (e.g., 5 seconds)
+    setTimeout(() => {
+        alertContainer.innerHTML = '';
+    }, 5000);
+}
+
+// Validate Functions
+function validate_email(email) {
+    expression = /^[^@]+@\w+(\.\w+)+\w$/
+    if (expression.test(email) == true) {
+        // Email is good
+        return true
+    } else {
+        // Email is not good
+        return false
+    }
+}
+
+function validate_password(password) {
+    // Firebase only accepts lengths greater than 6
+    if (password < 6) {
+        return false
+    } else {
+        return true
+    }
+}
+
+function validate_field(field) {
+    if (field == null) {
+        return false
+    }
+
+    if (field.length <= 0) {
+        return false
+    } else {
+        return true
+    }
+}
+
+//------------------------------------------- logout -------------------------------------------------------------------------------------------------------------------------------------
+
 const btnLogout = document.querySelector("#btnLogOut");
 btnLogout.addEventListener("click", function() {
     Swal.fire({
@@ -210,16 +218,40 @@ btnLogout.addEventListener("click", function() {
 
 });
 
-//set nav ui
-firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-        console.log("user :", user);
-    } else {
-        console.log("Unavaliable user");
-    }
-    setupUI(user);
-})
 
-let setupUI = (user) => {
-    document.querySelector("#user-profile-name").innerHTML = user.email;
-}
+firebase.auth().onAuthStateChanged((user) => {
+    const currentUser = firebase.auth().currentUser;
+    if (user) {
+        var userNameRef = firebase.database().ref('users/' + currentUser.uid + '/username');
+        userNameRef.once("value", (snapshot) => {
+            var data = snapshot.val();
+            console.log(data);
+            document.querySelector('#user-name').innerHTML = data;
+            document.querySelector("#user-profile-name").innerHTML = user.email;
+        });
+
+    }
+    console.log("User: ", user);
+    setupUI(user);
+});
+
+
+
+//set nav ui
+// firebase.auth().onAuthStateChanged((user) => {
+//     if(user) {
+//         console.log("user :", user);
+//     }
+//     else {
+//         console.log("Unavaliable user");
+//     }
+//     setupUI(user);
+// })
+
+// let setupUI = (user) => {
+//     const currentUser = firebase.auth().currentUser;
+
+//     document.querySelector("#user-profile-name").innerHTML = user.email;
+//     document.querySelector("#username").innerHTML = currentUser.email;
+
+// }

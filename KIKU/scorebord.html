@@ -21,14 +21,14 @@
             flex-direction: column;
             height: 100vh;
         }
-
+        
         .txt_score {
             margin: 0px 0px 10px 0px;
             width: 80%;
             font-size: 30px;
             color: #9E400C;
         }
-
+        
         .scoreborad {
             background-color: #fff;
             width: 80%;
@@ -37,27 +37,27 @@
             margin: 3px 0px 20px 0px;
             overflow: hidden;
         }
-
+        
         .score_table {
             color: #9E400C;
             width: 100%;
             font-size: 20px;
             border-collapse: collapse;
         }
-
+        
         .score_table th,
         .score_table td {
             padding: 30px;
             text-align: center;
         }
-
+        
         .exit_buttons button {
             color: #fff;
             padding: 13px 40px;
             font-size: 28px;
             margin-right: 20px;
         }
-
+        
         .exit {
             font-size: 30px;
             font-family: 'Langar', system-ui;
@@ -66,6 +66,48 @@
             color: white;
             border: none;
             padding: 8px 25px;
+        }
+        /* ----------------------------responsive - >992------------------------------- */
+        
+        @media (max-width: 992px) {
+            .score_table th,
+            .score_table td {
+                padding: 15px;
+                padding-top: 20px;
+                text-align: center;
+            }
+        }
+        /* ----------------------------responsive - >768------------------------------- */
+        
+        @media (max-width: 768px) {
+            .score_table th,
+            .score_table td {
+                padding: 10px;
+                padding-top: 20px;
+                text-align: center;
+            }
+        }
+        /* ----------------------------responsive - >576------------------------------- */
+        
+        @media (max-width: 576px) {
+            .score_table th,
+            .score_table td {
+                padding: 10px;
+                padding-top: 20px;
+                text-align: center;
+                font-size: 16px;
+            }
+        }
+        /* ----------------------------responsive - >320------------------------------- */
+        
+        @media (max-width: 320px) {
+            .score_table th,
+            .score_table td {
+                padding: 10px;
+                padding-top: 20px;
+                text-align: center;
+                font-size: 16px;
+            }
         }
     </style>
 </head>

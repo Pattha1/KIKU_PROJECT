@@ -21,21 +21,21 @@
             flex-direction: column;
             height: 100vh;
         }
-
+        
         .txt_score {
             margin: 0px 0px 100px 0px;
             width: 80%;
             font-size: 30px;
             color: #9E400C;
         }
-
+        
         .bord-container {
             display: flex;
             justify-content: center;
             width: 60%;
             margin: 10px;
         }
-
+        
         .profile_img {
             display: flex;
             justify-content: center;
@@ -47,7 +47,7 @@
             background-color: #ffffff;
             margin: 10px 400px 0px 30px;
         }
-
+        
         .member_img {
             display: flex;
             justify-content: center;
@@ -58,16 +58,15 @@
             border: 5px solid #000000;
             background-color: #ffffff;
             margin: 10px 30px 0px 30px;
-
         }
-
+        
         .txt-profile {
             display: flex;
             justify-content: center;
             width: 60%;
             margin: 10px;
         }
-
+        
         .profile_txt {
             display: flex;
             justify-content: center;
@@ -78,7 +77,7 @@
             background-color: #ffffff;
             margin: -5px 450px 50px 30px;
         }
-
+        
         .member_txt {
             display: flex;
             justify-content: center;
@@ -89,13 +88,13 @@
             background-color: #000000;
             margin: -5px 30px 50px 30px;
         }
-
+        
         .buttons button {
             padding: 13px 40px;
             font-size: 20px;
             margin: 20px 40px 20px 40px;
         }
-
+        
         .reload-btn {
             font-family: 'Langar', system-ui;
             border-radius: 8px;
@@ -104,7 +103,7 @@
             border: none;
             padding: 10px 30px;
         }
-
+        
         .play-btn {
             font-family: 'Langar', system-ui;
             margin-left: 20px;
@@ -114,13 +113,152 @@
             border: none;
             padding: 10px 30px;
         }
-
-        .playb{
+        
+        .playb {
             width: 27%;
             font-size: 14px;
             text-align: right;
             color: #7E3300;
             margin: -3px 0px 10px 0px;
+        }
+        /* ----------------------------responsive - >992------------------------------- */
+        
+        @media screen and (max-width: 992px) {
+            .txt_score {
+                margin: 20px 0px 40px 0px;
+            }
+            .member_img {
+                margin: 10px 0px 0px 90px;
+                width: 120px;
+                height: 120px;
+            }
+            .profile_img {
+                margin: 10px 90px 0px 30px;
+                width: 120px;
+                height: 120px;
+            }
+            .member_txt {
+                margin: 10px 0px 30px 110px;
+            }
+            .profile_txt {
+                margin: 10px 110px 30px 30px;
+            }
+            .playb {
+                margin: 10px 0px 10px 100px;
+            }
+        }
+        /* ----------------------------responsive - >768------------------------------- */
+        
+        @media screen and (max-width : 576px) {
+            .txt_score {
+                margin: 20px 0px 40px 0px;
+            }
+            .member_img {
+                margin: 10px 0px 0px 90px;
+                width: 120px;
+                height: 120px;
+            }
+            .profile_img {
+                margin: 10px 140px 0px 30px;
+                width: 120px;
+                height: 120px;
+            }
+            .member_txt {
+                margin: 10px 0px 30px 110px;
+            }
+            .profile_txt {
+                margin: 10px 160px 30px 20px;
+            }
+            .buttons button {
+                padding: 13px 40px;
+                font-size: 18px;
+                margin: 20px 20px 10px 50px;
+            }
+            .playb {
+                margin: 10px 0px 10px 10px;
+            }
+        }
+        /* ----------------------------responsive - >576------------------------------- */
+        
+        @media screen and (max-width: 576px) {
+            .txt_score {
+                margin: 70px 50px 30px 0px;
+                font-size: 30px;
+            }
+            .member_img {
+                margin: 10px 30px 0px 50px;
+                width: 90px;
+                height: 90px;
+            }
+            .profile_img {
+                margin: 10px 50px 0px 30px;
+                width: 90px;
+                height: 90px;
+            }
+            img {
+                width: 95px;
+                height: 80px;
+            }
+            .member_txt {
+                margin: 10px 50px 30px 80px;
+                padding: 5px 20px;
+                font-size: 14px;
+            }
+            .profile_txt {
+                margin: 10px 50px 30px 40px;
+                padding: 5px 20px;
+                font-size: 14px;
+            }
+            .buttons button {
+                padding: 13px 40px;
+                font-size: 15px;
+                margin: 50px 20px 0px 10px;
+            }
+            .playb {
+                margin: 20px 0px 50px 150px;
+                font-size: 12px;
+            }
+        }
+        /* ----------------------------responsive - >320------------------------------- */
+        
+        @media screen and (max-width: 320px) {
+            .txt_score {
+                margin: 60px 0px 30px 0px;
+                font-size: 28px;
+            }
+            .member_img {
+                margin: 10px 0px 0px 20px;
+                width: 80px;
+                height: 80px;
+            }
+            .profile_img {
+                margin: 10px 20px 0px 20px;
+                width: 80px;
+                height: 80px;
+            }
+            img {
+                width: 80px;
+                height: 75px;
+            }
+            .member_txt {
+                margin: 10px 20px 30px 25px;
+                padding: 5px 20px;
+                font-size: 14px;
+            }
+            .profile_txt {
+                margin: 10px 30px 30px 30px;
+                padding: 5px 20px;
+                font-size: 14px;
+            }
+            .buttons button {
+                padding: 13px 40px;
+                font-size: 15px;
+                margin: 20px 40px 0px 100px;
+            }
+            .playb {
+                margin: 30px 0px 50px 150px;
+                font-size: 12px;
+            }
         }
     </style>
 </head>
@@ -148,11 +286,12 @@
         <button class="play-btn" onclick="window.location.href='game_play_3x3.html'">Play</button>
     </div>
 
-    <div class="playb" onclick="window.location.href='main.html'"> << PLAY BACK</div>
+    <div class="playb" onclick="window.location.href='main.html'">
+        << PLAY BACK</div>
 
-    
-    <script>
-    </script>
+
+            <script>
+            </script>
 </body>
 
 </html>

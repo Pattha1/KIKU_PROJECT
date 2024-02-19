@@ -21,12 +21,12 @@
             flex-direction: column;
             height: 100vh;
         }
+        
         .profile-container {
             width: 90%;
             margin: 0px;
-
         }
-
+        
         .profile-picture {
             border: 3px solid #7E3300;
             background-color: #ffffff;
@@ -37,60 +37,135 @@
             margin: 10px;
             cursor: pointer;
         }
-
+        
         .profile-picture img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
         }
-
-        .txt_profile{
+        
+        .txt_profile {
             width: 88%;
-
         }
+        
         .user-name {
             font-size: 14px;
             font-weight: bold;
             color: #7E3300;
             margin-bottom: 10px;
         }
-        .joinroom{
+        
+        .joinroom {
             width: 80%;
             font-size: 30px;
             color: #7E3300;
             margin: 20px 0px 0px 0px;
         }
-        .room{
+        
+        .room {
             width: 80%;
             height: 60%;
             border: 4px solid #7E3300;
         }
-
-        .playb{
+        
+        .playb {
             width: 80%;
             font-size: 16px;
             text-align: right;
             color: #7E3300;
             margin: 10px 0px 10px 0px;
         }
-
-        .name_room{
+        
+        .name_room {
             font-size: 25px;
             color: #818181;
             padding: 5px 810px 10px 30px;
         }
-
-        .join_buttons{
+        
+        .join_buttons {
             font-size: 18px;
             background-color: #7E3300;
             color: #fff;
             border-radius: 8px;
             padding: 5px 24px;
         }
-
-
-
+        
+        @media screen and (max-width: 992px) {
+            .profile-container {
+                width: 87%;
+                margin-top: 20px;
+            }
+            .name_room {
+                padding: 5px 652px 10px 30px;
+            }
+            .txt_profile {
+                width: 85%;
+            }
+            .room {
+                width: 85%;
+            }
+            .playb {
+                width: 85%;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .profile-container {
+                width: 85%;
+                margin-top: 20px;
+            }
+            .txt_profile {
+                width: 80%;
+            }
+            .joinroom {
+                font-size: 20px;
+                margin-top: 6px;
+            }
+            .room {
+                width: 90%;
+            }
+            .name_room {
+                padding: 5px 335px 10px 30px;
+                font-size: 15px;
+            }
+            .playb {
+                width: 90%;
+                font-size: 14px;
+            }
+        }
+        
+        @media screen and (max-width: 320px) {
+            .profile-container {
+                width: 95%;
+                margin: 30px 0px 0px 50px;
+            }
+            .user-name {
+                margin: 0px 20px 0px 50px;
+            }
+            .txt_profile {
+                width: 100%;
+            }
+            .joinroom {
+                font-size: 18px;
+                margin: 30px 20px 0px 28px;
+            }
+            .room {
+                width: 85%;
+                margin: 5px 25px 0px 50px;
+            }
+            .name_room {
+                padding: 5px 140px 10px 10px;
+                font-size: 15px;
+            }
+            .join_buttons {
+                font-size: 15px;
+            }
+            .playb {
+                width: 95%;
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 
@@ -134,13 +209,13 @@
                 <td class="join_buttons" onclick="window.location.href='join_game_wait_3x3.html'">Join</td>
             </tr>
         </table>
-
     </div>
 
-    <div class="playb" onclick="window.location.href='main.html'"> << PLAY BACK</div>
+    <div class="playb" onclick="window.location.href='main.html'">
+        << PLAY BACK</div>
 
-    <script>
-    </script>
+            <script>
+            </script>
 </body>
 
 </html>

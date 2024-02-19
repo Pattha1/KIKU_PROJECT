@@ -84,6 +84,7 @@
             background-color: #9E400C;
             color: white;
             border: none;
+            cursor: pointer;
         }
         
         .signup-btn {
@@ -93,8 +94,41 @@
             background-color: #9E400C;
             color: white;
             border: none;
+            cursor: pointer;
         }
-        /* ----------------------------responsive - 768------------------------------- */
+        /* ----------------------------responsive - >992------------------------------- */
+        
+        @media (max-width: 992px) {
+            /* ความกว้างไม่เกิน 992px */
+            header {
+                background-color: #FFC909;
+                padding-top: 60px;
+                text-align: center;
+            }
+            .logo-container img {
+                width: 400px;
+                height: 230px;
+                margin-right: 10px;
+            }
+            h1 {
+                font-family: 'Langar', system-ui;
+                font-size: 38px;
+                color: #9E400C;
+                text-align: center;
+                padding-top: 20px;
+                margin: 0;
+            }
+            main {
+                padding: 13px;
+                text-align: center;
+            }
+            .cta-buttons button {
+                padding: 10px 29px;
+                font-size: 18px;
+                margin-right: 20px;
+            }
+        }
+        /* ----------------------------responsive - >768------------------------------- */
         
         @media (max-width: 768px) {
             /* ความกว้างไม่เกิน 768px */
@@ -126,63 +160,44 @@
                 margin-right: 20px;
             }
         }
-        /* ----------------------------responsive - 425------------------------------- */
+        /* ----------------------------responsive - >576------------------------------- */
         
-        @media (max-width: 425px) {
-            /* ความกว้างไม่เกิน 425px */
-            .logo-container img {
-                width: 280px;
-                height: 180px;
-                margin-right: 10px;
+        @media (max-width: 576px) {
+            /* ความกว้างไม่เกิน 576px */
+            #img_01 {
+                width: 300px;
+                height: 192px;
+            }
+            #img_02 {
+                width: 300px;
+                height: 192px;
             }
             h1 {
-                font-family: 'Langar', system-ui;
-                font-size: 35px;
-                color: #9E400C;
-                text-align: center;
-                padding-top: 20px;
-                margin: 0;
-            }
-            main {
-                padding: 15px;
-                text-align: center;
+                font-size: 30px;
             }
             .cta-buttons button {
-                padding: 6px 20px;
-                font-size: 18px;
-                margin-right: 20px;
+                padding: 10px 30px;
+                font-size: 20px;
             }
         }
         /* ----------------------------responsive - 320------------------------------- */
         
         @media (max-width: 320px) {
             /* ความกว้างไม่เกิน 320px */
-            header {
-                background-color: #FFC909;
-                padding-top: 60px;
-                text-align: center;
+            #img_01 {
+                width: 300px;
+                height: 192px;
             }
-            .logo-container img {
-                width: 280px;
-                height: 170px;
-                margin-right: 10px;
+            #img_02 {
+                width: 300px;
+                height: 192px;
             }
             h1 {
-                font-family: 'Langar', system-ui;
                 font-size: 30px;
-                color: #9E400C;
-                text-align: center;
-                padding-top: 20px;
-                margin: 0;
-            }
-            main {
-                padding: 13px;
-                text-align: center;
             }
             .cta-buttons button {
-                padding: 8px 20px;
-                font-size: 18px;
-                margin-right: 13px;
+                padding: 10px 30px;
+                font-size: 20px;
             }
         }
     </style>
@@ -208,8 +223,6 @@
     </main>
 
 
-    <script>
-    </script>
 </body>
 
 </html>

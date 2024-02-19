@@ -21,10 +21,11 @@
             flex-direction: column;
             height: 100vh;
         }
+        
         .profile-container {
             margin: 55px 0px 0px 0px;
         }
-
+        
         .profile-picture {
             border: 5px solid #7E3300;
             background-color: #ffffff;
@@ -35,29 +36,29 @@
             margin: 10px;
             cursor: pointer;
         }
-
+        
         .profile-picture img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
         }
-
+        
         .user-name {
             font-size: 30px;
             font-weight: bold;
             color: #7E3300;
             margin-bottom: 10px;
         }
-
-        .game{
+        
+        .game {
             width: 40%;
             font-size: 22px;
             color: #7E3300;
             margin: 10px 0px -3px 0px;
         }
-
-        .create{
+        
+        .create {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -71,8 +72,8 @@
             border-radius: 8px;
             margin: 10px 0px 30px 0px;
         }
-
-        .join{
+        
+        .join {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -86,17 +87,56 @@
             border-radius: 8px;
             margin: 10px 0px 10px 0px;
         }
-
-        .playb{
+        
+        .playb {
             width: 40%;
             font-size: 16px;
             text-align: right;
             color: #7E3300;
             margin: 3px 0px 10px 0px;
         }
-
-
-
+        /* Media Queries */
+        
+        @media screen and (max-width: 992px) {
+            .create,
+            .join,
+            .playb {
+                width: 60%;
+            }
+            .game {
+                margin: 10px 540px -8px 0px;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .create,
+            .join,
+            .playb {
+                width: 80%;
+            }
+            .game {
+                margin: 10px 400px -8px 0px;
+            }
+        }
+        
+        @media screen and (max-width: 320px) {
+            .user-name {
+                font-size: 20px;
+            }
+            .game {
+                font-size: 18px;
+            }
+            .create,
+            .join {
+                font-size: 18px;
+            }
+            .playb {
+                font-size: 14px;
+            }
+            .game {
+                margin: 10px 210px -8px 0px;
+            }
+        }
     </style>
 </head>
 
@@ -117,10 +157,10 @@
 
     <div class="join" onclick="window.location.href='join_game_3x3.html'">JOIN ROOM</div>
 
-    <div class="playb" onclick="window.location.href='main.html'"> << PLAY BACK</div>
+    <div class="playb" onclick="window.location.href='main.html'">
+        << PLAY BACK</div>
 
-    <script>
-    </script>
+
 </body>
 
 </html>
