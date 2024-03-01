@@ -218,6 +218,7 @@ btnLogout.addEventListener("click", function() {
 
 });
 
+//------------------------------------------- show email username -------------------------------------------------------------------------------------------------------------------------------------
 
 firebase.auth().onAuthStateChanged((user) => {
     const currentUser = firebase.auth().currentUser;
@@ -228,30 +229,11 @@ firebase.auth().onAuthStateChanged((user) => {
             console.log(data);
             document.querySelector('#user-name').innerHTML = data;
             document.querySelector("#user-profile-name").innerHTML = user.email;
-        });
+            document.querySelector('#user-name2').innerHTML = data;
 
+
+        });
     }
     console.log("User: ", user);
     setupUI(user);
 });
-
-
-
-//set nav ui
-// firebase.auth().onAuthStateChanged((user) => {
-//     if(user) {
-//         console.log("user :", user);
-//     }
-//     else {
-//         console.log("Unavaliable user");
-//     }
-//     setupUI(user);
-// })
-
-// let setupUI = (user) => {
-//     const currentUser = firebase.auth().currentUser;
-
-//     document.querySelector("#user-profile-name").innerHTML = user.email;
-//     document.querySelector("#username").innerHTML = currentUser.email;
-
-// }
