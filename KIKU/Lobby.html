@@ -112,46 +112,52 @@
         nav {
             display: none;
         }
-        /* Media Queries */
         
-        @media screen and (max-width: 992px) {
-            .create,
-            .join,
-            .playb {
-                width: 60%;
+        @media all and (max-width:576px) {
+            .profile-container {
+                margin: 0px;
             }
-            .game {
-                margin: 10px 540px -8px 0px;
-            }
-        }
-        
-        @media screen and (max-width: 576px) {
-            .create,
-            .join,
-            .playb {
-                width: 80%;
-            }
-            .game {
-                margin: 10px 400px -8px 0px;
-            }
-        }
-        
-        @media screen and (max-width: 320px) {
-            .user-name {
-                font-size: 20px;
-            }
-            .game {
+            .create {
                 font-size: 18px;
             }
-            .create,
             .join {
                 font-size: 18px;
             }
             .playb {
-                font-size: 14px;
+                font-size: 12px;
+                margin: 10px 0px;
             }
             .game {
-                margin: 10px 210px -8px 0px;
+                font-size: 18px;
+                margin: 10px 0px -3px 0px;
+            }
+            #user-name {
+                font-size: 28px;
+            }
+        }
+        
+        @media all and (max-width:320px) {
+            .profile-container {
+                margin: 0px;
+            }
+            .create {
+                font-size: 16px;
+                padding: 0px 15px;
+            }
+            .join {
+                font-size: 16px;
+                padding: 0px 15px;
+            }
+            .playb {
+                font-size: 12px;
+                margin: 10px 0px;
+            }
+            .game {
+                font-size: 16px;
+                margin: 24px 0px -3px -33px;
+            }
+            #user-name {
+                font-size: 28px;
             }
         }
     </style>
@@ -171,6 +177,7 @@
             </nav>
         </div>
     </nav>
+
     <div class="profile-container">
         <div class="profile-picture" onclick="toggleProfilePicture()">
             <img id="img_profile1" src="img/03.png" alt="Profile Picture">
@@ -178,8 +185,6 @@
     </div>
 
     <div class="txt_profile">
-        <!-- <span id="user-name"></span> -->
-
         <div id="user-name"></div>
     </div>
 
@@ -187,13 +192,14 @@
 
     <div class="create" onclick="window.location.href='create_room_3x3.html'">CREATE ROOM</div>
 
-    <div class="join" onclick="window.location.href='join_game_3x3.html'">JOIN ROOM</div>
+    <div class="join" onclick="window.location.href='join_game_wait_3x3.html'">JOIN ROOM</div>
 
     <div class="playb" onclick="window.location.href='main.html'">
-        << PLAY BACK </div>
+        << PLAY BACK</div>
 
             <script src="auth.js"></script>
-
+            <script src="createroom.js"></script>
+            <!-- <script src="test.js"></script> -->
 </body>
 
 </html>

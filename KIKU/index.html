@@ -18,6 +18,7 @@
             margin: 0;
             padding: 0;
             height: 100vh;
+            overflow: hidden;
         }
         
         header {
@@ -58,6 +59,12 @@
             }
         }
         
+        .txt-group-name {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
         h1 {
             font-family: 'Langar', system-ui;
             font-size: 45px;
@@ -68,6 +75,9 @@
         }
         
         main {
+            display: contents;
+            align-items: center;
+            justify-content: center;
             padding: 20px 0px 0px 10px;
             text-align: center;
         }
@@ -84,7 +94,6 @@
             background-color: #9E400C;
             color: white;
             border: none;
-            cursor: pointer;
         }
         
         .signup-btn {
@@ -94,110 +103,132 @@
             background-color: #9E400C;
             color: white;
             border: none;
-            cursor: pointer;
         }
-        /* ----------------------------responsive - >992------------------------------- */
         
-        @media (max-width: 992px) {
-            /* ความกว้างไม่เกิน 992px */
+        @media all and (max-width: 992px) {
+            .txt-group-name {
+                width: 100%;
+                display: contents;
+                justify-content: center;
+                align-items: center;
+            }
+            h1 {
+                font-size: 45px;
+                text-align: center;
+                padding-top: 15px;
+                margin: 10px 0px 30px 40px;
+                width: 100%;
+            }
+            .cta-buttons button {
+                padding: 13px 40px;
+                font-size: 28px;
+                margin-right: 20px;
+            }
+            button.login-btn {
+                margin: 0px 10px 5px 80px;
+            }
+            button.signup-btn {
+                margin: 0px 0px 5px 80px;
+            }
+        }
+        
+        @media all and (min-width: 992px) {
+            .txt-group-name {
+                width: 100%;
+                display: contents;
+                justify-content: center;
+                align-items: center;
+            }
+            h1 {
+                font-size: 45px;
+                text-align: center;
+                padding-top: 15px;
+                margin: 10px 0px 20px 40px;
+                width: 100%;
+            }
+            .cta-buttons button {
+                padding: 13px 40px;
+                font-size: 28px;
+                margin-right: 20px;
+            }
+            button.login-btn {
+                margin: 0px 10px 5px 80px;
+            }
+            button.signup-btn {
+                margin: 0px 0px 50px 80px;
+            }
+        }
+        
+        @media all and (max-width: 576px) {
+            /* 576-320 */
+            .txt-group-name {
+                width: 100%;
+                display: contents;
+                justify-content: center;
+                align-items: center;
+            }
+            h1 {
+                font-size: 45px;
+                text-align: center;
+                padding-top: 15px;
+                margin: 10px 40px;
+                width: 100%;
+            }
+            .cta-buttons button {
+                padding: 13px 40px;
+                font-size: 28px;
+                margin-right: 20px;
+            }
+            button.login-btn {
+                margin: 0px 10px 30px 80px;
+            }
+            button.signup-btn {
+                margin: 0px 0px 50px 80px;
+            }
+        }
+        
+        @media all and (max-width: 320px) {
+            body {
+                height: 100%;
+            }
             header {
-                background-color: #FFC909;
-                padding-top: 60px;
+                padding-top: 40px;
                 text-align: center;
             }
             .logo-container img {
-                width: 400px;
-                height: 230px;
-                margin-right: 10px;
+                margin-top: 40px;
+            }
+            img#img_02 {
+                width: 230px;
+                height: 170px;
+                margin-left: 20px;
+            }
+            img#img_01 {
+                width: 270px;
+                height: 170px;
             }
             h1 {
-                font-family: 'Langar', system-ui;
-                font-size: 38px;
-                color: #9E400C;
-                text-align: center;
+                font-size: 35px;
                 padding-top: 20px;
-                margin: 0;
+                margin: 0px;
+                text-align: center;
             }
             main {
                 padding: 13px;
                 text-align: center;
             }
             .cta-buttons button {
-                padding: 10px 29px;
-                font-size: 18px;
-                margin-right: 20px;
-            }
-        }
-        /* ----------------------------responsive - >768------------------------------- */
-        
-        @media (max-width: 768px) {
-            /* ความกว้างไม่เกิน 768px */
-            header {
-                background-color: #FFC909;
-                padding-top: 60px;
-                text-align: center;
-            }
-            .logo-container img {
-                width: 400px;
-                height: 230px;
-                margin-right: 10px;
-            }
-            h1 {
-                font-family: 'Langar', system-ui;
-                font-size: 38px;
-                color: #9E400C;
-                text-align: center;
-                padding-top: 20px;
-                margin: 0;
-            }
-            main {
-                padding: 13px;
-                text-align: center;
-            }
-            .cta-buttons button {
-                padding: 10px 29px;
-                font-size: 18px;
-                margin-right: 20px;
-            }
-        }
-        /* ----------------------------responsive - >576------------------------------- */
-        
-        @media (max-width: 576px) {
-            /* ความกว้างไม่เกิน 576px */
-            #img_01 {
-                width: 300px;
-                height: 192px;
-            }
-            #img_02 {
-                width: 300px;
-                height: 192px;
-            }
-            h1 {
-                font-size: 30px;
-            }
-            .cta-buttons button {
-                padding: 10px 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 9px 22px;
                 font-size: 20px;
             }
-        }
-        /* ----------------------------responsive - 320------------------------------- */
-        
-        @media (max-width: 320px) {
-            /* ความกว้างไม่เกิน 320px */
-            #img_01 {
-                width: 300px;
-                height: 192px;
+            button.login-btn {
+                margin: 20px 0px 25px 100px;
             }
-            #img_02 {
-                width: 300px;
-                height: 192px;
-            }
-            h1 {
-                font-size: 30px;
-            }
-            .cta-buttons button {
-                padding: 10px 30px;
-                font-size: 20px;
+            button.signup-btn {
+                margin: 0px 0px 50px 95px;
             }
         }
     </style>
@@ -223,6 +254,10 @@
     </main>
 
 
+
+
+    <script>
+    </script>
 </body>
 
 </html>

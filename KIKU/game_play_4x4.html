@@ -117,12 +117,10 @@
         .sub {
             display: flex;
             flex-direction: row;
-            background-color: white;
+            background-color: #ffffff;
         }
         
         .square {
-            width: 40%;
-            height: 60%;
             border: 2px solid #000;
             height: 100px;
             width: 100px;
@@ -142,7 +140,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #94f20f;
+            background-color: #FDDB63;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             z-index: 999;
@@ -156,16 +154,14 @@
             margin-top: -20px;
         }
         
-        .player_win,
-        .player_draw {
+        .player_win {
             font-size: 70px;
             color: #000;
             text-align: center;
             margin-top: -20px;
         }
         
-        .win,
-        .draw {
+        .win {
             font-size: 40px;
             color: #000;
             text-align: center;
@@ -242,21 +238,6 @@
             margin: 10px;
         }
         
-        .popupD-container {
-            width: 30%;
-            height: 70%;
-            border-radius: 8px;
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #94f20f;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            z-index: 999;
-        }
-        
         .icon1L,
         .icon2L {
             display: flex;
@@ -273,56 +254,139 @@
             width: 100%;
             height: 100%;
         }
-        /* ----------------------------responsive - >992------------------------------- */
         
-        @media (max-width: 992px) {
+        .mini-popup-container {
+            width: 30%;
+            height: 40%;
+            border-radius: 8px;
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+        }
+        
+        .mini-math {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 20%;
+            border-radius: 8px;
+            border: 2px solid #950303;
+            background-color: #B70303;
+            font-size: 20px;
+            color: #fff;
+        }
+        
+        #answer {
+            width: 100%;
+            height: 10%;
+        }
+        
+        .popup-input {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3px;
+        }
+        
+        .popup-button {
+            padding: 10px;
+            background-color: #B70303;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .jod {
+            width: 100%;
+            height: 10%;
+            font-size: 25px;
+            color: #B70303;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 0px;
+        }
+        
+        @media all and (max-width:992px) {
             .bord-container {
-                text-align: center;
+                width: 50%;
             }
             .profile_img {
-                margin: 10px 500px 0px 30px;
+                margin: 10px 150px 0px 30px;
             }
             .profile_txt {
-                margin: -10px 500px 0px 30px;
+                margin: -10px 160px 0px 30px;
+            }
+            .mini-popup-container {
+                width: 35%;
+                height: 40%;
             }
         }
-        /* ----------------------------responsive - >768------------------------------- */
         
-        @media (max-width: 768px) {
+        @media all and (min-width:992px) {
             .bord-container {
-                text-align: center;
+                width: 50%;
             }
             .profile_img {
                 margin: 10px 400px 0px 30px;
             }
             .profile_txt {
-                margin: -10px 400px 0px 30px;
+                margin: -10px 410px 0px 30px;
+            }
+            .mini-popup-container {
+                width: 30%;
+                height: 40%;
             }
         }
-        /* ----------------------------responsive - >576------------------------------- */
         
-        @media (max-width: 576px) {
+        @media all and (max-width:576px) {
             .bord-container {
-                text-align: center;
-            }
-            .profile_img {
-                margin: 10px 200px 0px 30px;
-            }
-            .profile_txt {
-                margin: -10px 200px 0px 30px;
-            }
-        }
-        /* ----------------------------responsive - >320------------------------------- */
-        
-        @media (max-width: 320px) {
-            .bord-container {
-                text-align: center;
+                width: 50%;
             }
             .profile_img {
                 margin: 10px 100px 0px 30px;
             }
             .profile_txt {
-                margin: -10px 100px 0px 30px;
+                margin: -10px 110px 0px 30px;
+            }
+            .square {
+                width: 70px;
+                height: 70px;
+            }
+            .mini-popup-container {
+                width: 40%;
+                height: 30%;
+            }
+            .jod {
+                font-size: 20px;
+                padding: 20px 0px;
+            }
+        }
+        
+        @media all and (max-width:320px) {
+            .bord-container {
+                width: 50%;
+            }
+            .profile_img {
+                margin: 10px 80px 0px 30px;
+            }
+            .profile_txt {
+                margin: -10px 90px 0px 30px;
+            }
+            .square {
+                width: 60px;
+                height: 60px;
+            }
+            .mini-popup-container {
+                width: 60%;
+                height: 30%;
             }
         }
     </style>
@@ -378,7 +442,6 @@
             <div class="square" onclick="placeMarker(3, 3)"></div>
         </div>
     </div>
-    <!-------------------------------------------------------------- popup win -------------------------------------------------------------------------------------->
 
     <div id="popupw" class="popupw-container">
         <img class="win_img" src="img/10.png" alt="win_Picture">
@@ -386,7 +449,7 @@
         <div class="win">WIN !!!</div>
         <div class="selectW">
             <div class="icon1w">
-                <img onclick="window.location.href='game_play_4X4.html'" id="select_icon_1w" src="img/11.png" alt="bord3x3 Picture" width="100px" height="100px">
+                <img onclick="window.location.href='game_play_3X3.html'" id="select_icon_1w" src="img/11.png" alt="bord3x3 Picture" width="100px" height="100px">
             </div>
             <div class="icon2w">
                 <img onclick="window.location.href='main.html'" id="select_icon_2w" src="img/12.png" alt="bord4x4 Picture" width="100px" height="100px">
@@ -396,25 +459,6 @@
             </div>
         </div>
     </div>
-    <!-------------------------------------------------------------- popup draw -------------------------------------------------------------------------------------->
-    <div id="popupD" class="popupD-container">
-        <img class="win_img" src="img/10.png" alt="win_Picture">
-        <div class="player_draw"></div>
-        <div class="draw">Draw</div>
-        <div class="selectW">
-            <div class="icon1w">
-                <img onclick="window.location.href='game_play_4X4.html'" id="select_icon_1w" src="img/11.png" alt="bord3x3 Picture" width="100px" height="100px">
-            </div>
-            <div class="icon2w">
-                <img onclick="window.location.href='main.html'" id="select_icon_2w" src="img/12.png" alt="bord4x4 Picture" width="100px" height="100px">
-            </div>
-            <div class="icon3w">
-                <img onclick="window.location.href='main.html'" id="select_icon_3w" src="img/13.png" alt="bord5x5 Picture" width="100px" height="100px">
-            </div>
-        </div>
-    </div>
-
-    <!-------------------------------------------------------------- popup lose -------------------------------------------------------------------------------------->
 
     <div id="popupl" class="popupl-container">
         <img class="lose_img" src="img/15.png" alt="win_Picture">
@@ -422,7 +466,7 @@
         <div class="lose">LOSE !!!</div>
         <div class="selectL">
             <div class="icon1L">
-                <img onclick="window.location.href='game_play_4X4.html'" id="select_icon_1L" src="img/11.png" alt="bord3x3 Picture" width="100px" height="100px">
+                <img onclick="window.location.href='game_play_3X3.html'" id="select_icon_1L" src="img/11.png" alt="bord3x3 Picture" width="100px" height="100px">
             </div>
             <div class="icon2L">
                 <img onclick="window.location.href='main.html'" id="select_icon_2L" src="img/12.png" alt="bord4x4 Picture" width="100px" height="100px">
@@ -430,7 +474,114 @@
         </div>
     </div>
 
+    <div id="popup" class="mini-popup-container">
+        <div class="mini-math">Quiz Math</div>
+        <div class="jod">4+10+12+9+7+3+1</div>
+        <label for="answer" class="popup-input"></label>
+        <input type="text" id="answer" class="popup-input"><br>
+        <button onclick="submitAnswer()" class="popup-button">Answer</button>
+    </div>
+
+    <!-- <script>
+        let currentPlayer = 'X';
+        let board = [
+            ['', '', '', ''],
+            ['', '', '', ''],
+            ['', '', '', ''],
+            ['', '', '', '']
+        ];
+        let timeLeftX = 10; // เวลาที่เหลือของ Player X
+        let timeLeftO = 10; // เวลาที่เหลือของ Player O
+
+        function startTimer() {
+            setInterval(() => {
+                if (currentPlayer === 'X') {
+                    timeLeftX--;
+                    if (timeLeftX === 0) {
+                        currentPlayer = 'O';
+                        timeLeftX = 10;
+                    }
+                } else {
+                    timeLeftO--;
+                    if (timeLeftO === 0) {
+                        currentPlayer = 'X';
+                        timeLeftO = 10;
+                    }
+                }
+                // อัปเดต UI ให้แสดงเวลาที่เหลือ
+                document.querySelector('.time_to_play').innerText = `00:${currentPlayer === 'X' ? timeLeftX : timeLeftO}`;
+            }, 1000);
+        }
+
+        function placeMarker(row, col) {
+            if (board[row][col] === '') {
+                board[row][col] = currentPlayer;
+                document.querySelector(`.sub:nth-child(${row + 1}) .square:nth-child(${col + 1})`).innerText = currentPlayer;
+                if (checkWin()) {
+                    document.getElementById('popupw').style.display = 'block';
+                    document.querySelector('.win').innerText = 'WIN !!!';
+                    document.querySelector('.win_img').src = 'img/10.png';
+                    document.querySelector('.player_win').innerText = `Player ${currentPlayer}`;
+                } else {
+                    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                }
+                // เพิ่มโค้ดตรวจสอบการแพ้ที่นี่
+                if (checkDraw()) {
+                    document.getElementById('popupl').style.display = 'block';
+                    document.querySelector('.win').innerText = 'LOSE !!!';
+                    document.querySelector('.win_img').src = 'img/15.png';
+                    document.querySelector('.player_win').innerText = `Player ${currentPlayer}`;
+                }
+            }
+        }
+
+        function checkWin() {
+            // Check rows
+            for (let i = 0; i < 4; i++) {
+                if (board[i][0] !== '' && board[i][0] === board[i][1] && board[i][0] === board[i][2] && board[i][0] === board[i][3]) {
+                    return true;
+                }
+            }
+            // Check columns
+            for (let i = 0; i < 4; i++) {
+                if (board[0][i] !== '' && board[0][i] === board[1][i] && board[0][i] === board[2][i] && board[0][i] === board[3][i]) {
+                    return true;
+                }
+            }
+            // Check diagonals
+            if (board[0][0] !== '' && board[0][0] === board[1][1] && board[0][0] === board[2][2] && board[0][0] === board[3][3]) {
+                return true;
+            }
+            if (board[0][3] !== '' && board[0][3] === board[1][2] && board[0][3] === board[2][1] && board[0][3] === board[3][0]) {
+                return true;
+            }
+            return false;
+        }
+
+        function checkTie() {
+            for (let i = 0; i < 4; i++) {
+                for (let j = 0; j < 4; j++) {
+                    if (board[i][j] === '') {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        function resetBoard() {
+            board = [
+                ['', '', '', ''],
+                ['', '', '', ''],
+                ['', '', '', ''],
+                ['', '', '', '']
+            ];
+            document.querySelectorAll('.square').forEach(square => square.innerText = '');
+            currentPlayer = 'X';
+        }
+
+        window.onload = startTimer;
+    </script> -->
 </body>
-<script src="game4x4.js"></script>
 
 </html>

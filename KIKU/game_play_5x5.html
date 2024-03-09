@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -117,21 +116,18 @@
         .sub {
             display: flex;
             flex-direction: row;
+            background-color: #ffffff;
         }
         
         .square {
-            width: 60px;
-            /* ปรับขนาดเพื่อให้ตารางเหมาะสมกับขนาดของหน้าจอ */
-            height: 60px;
-            /* ปรับขนาดเพื่อให้ตารางเหมาะสมกับขนาดของหน้าจอ */
+            width: 75px;
+            height: 75px;
             border: 2px solid #000;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 28px;
-            /* ปรับขนาดเครื่องหมาย */
             line-height: 1;
-            /* ปรับขนาดตำแหน่งให้เหมาะสม */
             cursor: pointer;
         }
         
@@ -258,56 +254,228 @@
             width: 100%;
             height: 100%;
         }
-        /* ----------------------------responsive - >992------------------------------- */
         
-        @media (max-width: 992px) {
+        @media all and (max-width:992px) {
             .bord-container {
-                text-align: center;
+                width: 50%;
             }
             .profile_img {
-                margin: 10px 500px 0px 30px;
+                margin: 10px 150px 0px 30px;
             }
             .profile_txt {
-                margin: -10px 500px 0px 30px;
+                margin: -10px 160px 0px 30px;
+            }
+            .popupw-container {
+                width: 50%;
+                height: 50%;
+                margin-left: -1px;
+            }
+            .win_img {
+                width: 130px;
+                height: 130px;
+                padding-left: 10px;
+                margin-left: 20%;
+                margin-top: 0px;
+            }
+            .player_win {
+                font-size: 45px;
+            }
+            #select_icon_1w,
+            #select_icon_2w,
+            #select_icon_3w {
+                width: 250%;
+                height: 100%;
+            }
+            .popupl-container {
+                width: 50%;
+                height: 50%;
+                margin-left: -1px;
+            }
+            .lose_img {
+                width: 130px;
+                height: 130px;
+                padding-left: 10px;
+                margin-left: 20%;
+                margin-top: 0px;
+            }
+            .player_lose {
+                font-size: 45px;
+            }
+            #select_icon_1L,
+            #select_icon_2L,
+            #select_icon_3L {
+                width: 250%;
+                height: 100%;
             }
         }
-        /* ----------------------------responsive - >768------------------------------- */
         
-        @media (max-width: 768px) {
+        @media all and (min-width:992px) {
             .bord-container {
-                text-align: center;
+                width: 50%;
             }
             .profile_img {
                 margin: 10px 400px 0px 30px;
             }
             .profile_txt {
-                margin: -10px 400px 0px 30px;
+                margin: -10px 410px 0px 30px;
+            }
+            .popupw-container {
+                width: 30%;
+                height: 60%;
+                margin-top: 10px;
+            }
+            .win_img {
+                width: 130px;
+                height: 130px;
+                padding-left: 10px;
+                margin-left: 80px;
+                margin-top: 0px;
+            }
+            .player_win {
+                font-size: 50px;
+            }
+            #select_icon_1w,
+            #select_icon_2w,
+            #select_icon_3w {
+                width: 250%;
+                height: 100%;
+            }
+            .popupl-container {
+                width: 30%;
+                height: 60%;
+                margin-top: 10px;
+            }
+            .lose_img {
+                width: 130px;
+                height: 130px;
+                padding-left: 10px;
+                margin-left: 80px;
+                margin-top: 0px;
+            }
+            .player_lose {
+                font-size: 50px;
+            }
+            #select_icon_1L,
+            #select_icon_2L,
+            #select_icon_3L {
+                width: 250%;
+                height: 100%;
             }
         }
-        /* ----------------------------responsive - >576------------------------------- */
         
-        @media (max-width: 576px) {
+        @media all and (max-width:576px) {
             .bord-container {
-                text-align: center;
-            }
-            .profile_img {
-                margin: 10px 200px 0px 30px;
-            }
-            .profile_txt {
-                margin: -10px 200px 0px 30px;
-            }
-        }
-        /* ----------------------------responsive - >320------------------------------- */
-        
-        @media (max-width: 320px) {
-            .bord-container {
-                text-align: center;
+                width: 50%;
             }
             .profile_img {
                 margin: 10px 100px 0px 30px;
             }
             .profile_txt {
-                margin: -10px 100px 0px 30px;
+                margin: -10px 110px 0px 30px;
+            }
+            .square {
+                width: 60px;
+                height: 60px;
+            }
+            .popupw-container {
+                width: 60%;
+                height: 50%;
+                margin-left: -10px;
+            }
+            .win_img {
+                width: 130px;
+                height: 130px;
+                padding-left: 10px;
+                margin-left: 20%;
+                margin-top: 0px;
+            }
+            .player_win {
+                font-size: 45px;
+            }
+            #select_icon_1w,
+            #select_icon_2w,
+            #select_icon_3w {
+                width: 350%;
+                height: 100%;
+            }
+            .popupl-container {
+                width: 60%;
+                height: 50%;
+                margin-left: -10px;
+            }
+            .lose_img {
+                width: 130px;
+                height: 130px;
+                padding-left: 10px;
+                margin-left: 20%;
+                margin-top: 0px;
+            }
+            .player_lose {
+                font-size: 45px;
+            }
+            #select_icon_1L,
+            #select_icon_2L,
+            #select_icon_3L {
+                width: 350%;
+                height: 100%;
+            }
+        }
+        
+        @media all and (max-width:320px) {
+            .bord-container {
+                width: 50%;
+            }
+            .profile_img {
+                margin: 10px 80px 0px 30px;
+            }
+            .profile_txt {
+                margin: -10px 90px 0px 30px;
+            }
+            .square {
+                width: 50px;
+                height: 50px;
+            }
+            .popupw-container {
+                width: 70%;
+                height: 50%;
+                margin-left: 0px;
+            }
+            .win_img {
+                width: 130px;
+                height: 130px;
+                padding-left: 10px;
+                margin-left: 20%;
+                margin-top: 0px;
+            }
+            .player_win {
+                font-size: 50px;
+            }
+            #select_icon_1w,
+            #select_icon_2w,
+            #select_icon_3w {
+                width: 250%;
+                height: 100%;
+            }
+            .popupl-container {
+                width: 70%;
+                height: 50%;
+                margin-left: 0px;
+            }
+            .lose_img {
+                width: 130px;
+                height: 130px;
+                padding-left: 10px;
+                margin-left: 20%;
+                margin-top: 0px;
+            }
+            .player_lose {
+                font-size: 50px;
+            }
+            #select_icon_1L,
+            #select_icon_2L,
+            #select_icon_3L {
+                width: 250%;
+                height: 100%;
             }
         }
     </style>
@@ -407,7 +575,7 @@
     </div>
 
 
-    <script>
+    <!-- <script>
         let currentPlayer = 'X'; // ผู้เล่นปัจจุบัน (เริ่มต้นด้วย X)
         let board = [
             ['', '', '', '', ''],
@@ -474,8 +642,7 @@
             }
             return false;
         }
-    </script>
+    </script> -->
 </body>
-<script src="game.js"></script>
 
 </html>

@@ -98,6 +98,7 @@
             text-align: right;
             color: #7E3300;
             margin: -3px 0px 10px 0px;
+            cursor: pointer;
         }
         
         .txt_level {
@@ -208,21 +209,41 @@
         }
         /* ----------------------------responsive - 320------------------------------- */
         
-        @media (max-width: 320px) {
-            .profile-container {
-                margin-top: 30px;
+        @media all and (max-width:320px) {
+            .txt_level {
+                width: 70%;
             }
             .create-room-form {
-                width: 80%;
+                width: 70%;
+                margin-top: 15px;
             }
             .playb {
-                text-align: right;
+                width: 70%;
             }
-            .txt_level {
-                width: 85%;
+            .minigame {
+                display: flex;
+                justify-content: center;
+                width: 65%;
+                margin: -20px 10px 20px 10px;
             }
-            .create_buttons {
-                margin-bottom: 0px;
+            .create_buttons button {
+                font-size: 20px;
+            }
+            .mini1,
+            .mini2,
+            .mini3,
+            .mini4 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 8px;
+                width: 50px;
+                height: 50px;
+                font-size: 16px;
+                background-color: #7E3300;
+                color: #fff;
+                padding: 0px 4px;
+                margin: 10px 15px 0px -6px;
             }
         }
     </style>
@@ -280,14 +301,14 @@
             </div>
 
             <div class="create_buttons">
-                <button class="create" type="button" onclick="createRoom()">Create Room</button>
+                <button class="create" id="createRoomBtn" type="button" onclick="createNewRoom()">Create Room</button>
 
                 <!--<button class="create" type="button" onclick="window.location.href='create_room_wait_3x3.html'">Create Room</button>-->
             </div>
 
             <script src="auth.js"></script>
             <script src="createroom.js"></script>
-            <script src="test.js"></script>
+            <!-- <script src="test.js"></script> -->
 
 
 

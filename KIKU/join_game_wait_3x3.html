@@ -8,7 +8,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Langar&display=swap" rel="stylesheet">
-    <title>KIKU - Create Room Wait</title>
+    <title>KIKU - Join Room</title>
+
+    <!-- Cool Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Langar&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-check-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
     <style>
         body {
             font-family: 'Langar', system-ui;
@@ -20,278 +34,256 @@
             justify-content: center;
             flex-direction: column;
             height: 100vh;
+            overflow: auto;
+            margin: 0;
+            padding: 0;
         }
         
-        .txt_score {
-            margin: 20px 0px 50px 0px;
-            width: 60%;
-            font-size: 30px;
-            color: #9E400C;
+        .profile-container {
+            width: 9%;
+            margin-top: 30px;
+            margin-right: -50px;
         }
         
-        .bord-container {
-            display: flex;
-            justify-content: center;
-            width: 60%;
-            margin: 10px;
-        }
-        
-        .profile_img {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            width: 130px;
-            height: 130px;
-            border: 5px solid #7E3300;
+        .profile-picture {
+            border: 3px solid #7E3300;
             background-color: #ffffff;
-            margin: 10px 400px 0px 30px;
-        }
-        
-        .member_img {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            width: 130px;
-            height: 130px;
-            border: 5px solid #000000;
-            background-color: #ffffff;
-            margin: 10px 30px 0px 30px;
-        }
-        
-        .txt-profile {
-            display: flex;
-            justify-content: center;
-            width: 60%;
+            overflow: hidden;
             margin: 10px;
+            cursor: pointer;
         }
         
-        .profile_txt {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 30px;
-            border-radius: 8px;
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        #user-name {
+            font-size: 25px;
+            font-weight: bold;
             color: #7E3300;
-            background-color: #ffffff;
-            margin: -5px 450px 50px 30px;
+            margin-bottom: 10px;
+            margin-right: -6px;
         }
         
-        .member_txt {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 30px;
-            border-radius: 8px;
-            color: #ffffff;
-            background-color: #000000;
-            margin: -5px 30px 50px 30px;
-        }
-        
-        .buttons button {
-            padding: 13px 40px;
-            font-size: 20px;
-            margin: 20px 40px 20px 40px;
-        }
-        
-        .reload-btn {
-            font-family: 'Langar', system-ui;
-            border-radius: 8px;
+        .joinroom {
+            width: 100%;
+            font-size: 30px;
+            color: #FFC909;
             background-color: #7E3300;
-            color: white;
-            border: none;
-            padding: 10px 30px;
+            text-align: center;
+            margin: 20px 0px 30px 0px;
+            padding: 5px 0px;
         }
         
-        .play-btn {
-            font-family: 'Langar', system-ui;
-            margin-left: 20px;
-            border-radius: 8px;
-            background-color: #7E3300;
-            color: white;
-            border: none;
-            padding: 10px 30px;
+        .room {
+            width: 45%;
+            height: 50%;
+            border: 5px solid #7E3300;
+            border-radius: 7px;
+            max-height: 400px;
+            align-content: center;
+            overflow-y: auto;
         }
         
         .playb {
-            width: 27%;
-            font-size: 14px;
+            width: 45%;
+            font-size: 16px;
             text-align: right;
             color: #7E3300;
-            margin: 10px 0px 10px 100px;
+            margin: 0px 0px 10px 0px;
+            cursor: pointer;
         }
-        /* ----------------------------responsive - >992------------------------------- */
         
-        @media screen and (max-width: 992px) {
-            .txt_score {
-                margin: 20px 0px 40px 0px;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+            /* Center-align text in table cells */
+        }
+        
+        td.name_room {
+            font-size: 25px;
+            color: #818181;
+            padding: 5px 390px 10px 30px;
+            margin-right: -10px;
+        }
+        
+        .join_buttons {
+            font-family: 'Langar', system-ui;
+            font-size: 18px;
+            background-color: #7E3300;
+            color: #fff;
+            border-radius: 8px;
+            padding: 5px 24px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        
+        .join_buttons:hover {
+            background-color: #b9632d;
+            /* เปลี่ยนสีเอาเด้อ */
+        }
+        
+        .navbar {
+            background-color: #9E400C;
+            display: none;
+        }
+        
+        .nav {
+            display: none;
+        }
+        
+        @media all and (max-width:992px) {
+            .room {
+                width: 82%;
             }
-            .member_img {
-                margin: 10px 0px 0px 90px;
-                width: 120px;
-                height: 120px;
+            td.name_room {
+                padding: 5px 164px 10px 30px;
             }
-            .profile_img {
-                margin: 10px 90px 0px 30px;
-                width: 120px;
-                height: 120px;
-            }
-            .member_txt {
-                margin: 10px 0px 30px 110px;
-            }
-            .profile_txt {
-                margin: 10px 110px 30px 30px;
-            }
-            .playb {
-                margin: 10px 0px 10px 100px;
+            .join_buttons {
+                font-size: 20px;
             }
         }
-        /* ----------------------------responsive - >768------------------------------- */
         
-        @media screen and (max-width: 576px) {
-            .txt_score {
-                margin: 20px 0px 40px 0px;
+        @media all and (width:768px) {
+            .room {
+                width: 50%;
             }
-            .member_img {
-                margin: 10px 0px 0px 90px;
-                width: 120px;
-                height: 120px;
-            }
-            .profile_img {
-                margin: 10px 140px 0px 30px;
-                width: 120px;
-                height: 120px;
-            }
-            .member_txt {
-                margin: 10px 0px 30px 110px;
-            }
-            .profile_txt {
-                margin: 10px 160px 30px 20px;
-            }
-            .buttons button {
-                padding: 13px 40px;
-                font-size: 18px;
-                margin: 20px 20px 10px 50px;
-            }
-            .playb {
-                margin: 10px 0px 10px 10px;
+            td.name_room {
+                padding: 5px 163px 10px 30px;
             }
         }
-        /* ----------------------------responsive - >576------------------------------- */
         
-        @media screen and (max-width: 576px) {
-            .txt_score {
-                margin: 70px 50px 30px 0px;
-                font-size: 30px;
+        @media all and (max-width:576px) {
+            .room {
+                width: 70%;
             }
-            .member_img {
-                margin: 10px 30px 0px 50px;
-                width: 90px;
-                height: 90px;
+            td.name_room {
+                padding: 5px 75px 10px 30px;
             }
-            .profile_img {
-                margin: 10px 50px 0px 30px;
-                width: 90px;
-                height: 90px;
+            .join_buttons {
+                font-size: 16px;
             }
-            img {
-                width: 95px;
-                height: 80px;
+        }
+        
+        @media all and (max-width:320px) {
+            .room {
+                width: 60%;
             }
-            .member_txt {
-                margin: 10px 50px 30px 80px;
-                padding: 5px 20px;
-                font-size: 14px;
+            td.name_room {
+                font-size: 16px;
+                padding: 5px 56px 10px 10px;
             }
-            .profile_txt {
-                margin: 10px 50px 30px 40px;
-                padding: 5px 20px;
-                font-size: 14px;
-            }
-            .buttons button {
-                padding: 13px 40px;
-                font-size: 15px;
-                margin: 50px 20px 0px 10px;
-            }
-            .playb {
-                margin: 20px 0px 50px 150px;
+            .join_buttons {
                 font-size: 12px;
             }
-        }
-        /* ----------------------------responsive - >320------------------------------- */
-        
-        @media screen and (max-width: 320px) {
-            .txt_score {
-                margin: 60px 0px 30px 0px;
-                font-size: 28px;
+            .joinroom {
+                font-size: 20px;
             }
-            .member_img {
-                margin: 10px 0px 0px 20px;
-                width: 80px;
-                height: 80px;
+            .user-name {
+                font-size: 23px;
             }
-            .profile_img {
-                margin: 10px 20px 0px 20px;
-                width: 80px;
-                height: 80px;
-            }
-            img {
-                width: 80px;
-                height: 75px;
-            }
-            .member_txt {
-                margin: 10px 20px 30px 25px;
-                padding: 5px 20px;
-                font-size: 14px;
-            }
-            .profile_txt {
-                margin: 10px 30px 30px 30px;
-                padding: 5px 20px;
-                font-size: 14px;
-            }
-            .buttons button {
-                padding: 13px 40px;
-                font-size: 15px;
-                margin: 20px 40px 0px 100px;
+            .profile-container {
+                width: 100px;
             }
             .playb {
-                margin: 30px 0px 50px 150px;
-                font-size: 12px;
+                width: 60%;
+                font-size: 14px;
+                margin: 5px 0px 10px 0px;
             }
         }
     </style>
 </head>
 
 <body>
-
-    <div class="txt_score">CREATE ROOM</div>
-
-    <div class="bord-container">
-        <div class="profile_img">
-            <img src="img/03.png" alt="profile_Picture" width="100px" height="100px">
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand">KIKU - Tic Tac Toe</a>
+            <nav>
+                <span class="logged-in">
+                    <span id="user-profile-name" class="display-name text-white"></span>
+                </span>
+                <button type="button" id="btnLogOut" class="btn btn-outline-light logged-in">
+                    <i class="bi bi-box-arrow-right"></i> Log Out
+                </button>
+            </nav>
         </div>
-        <div class="member_img">
-            <img src="img/05.png" alt="member_Picture" width="100px" height="100px">
+    </nav>
+
+    <div class="profile-container">
+        <div class="profile-picture" onclick="toggleProfilePicture()">
+            <img id="img_profile1" src="img/03.png" alt="Profile Picture">
         </div>
     </div>
 
-    <div class="txt-profile">
-        <div class="profile_txt">NAME</div>
-        <div class="member_txt">???</div>
+    <div class="txt_profile">
+        <div id="user-name">user-name</div>
     </div>
 
-    <div class="buttons">
-        <button class="reload-btn" onclick="window.location.href='create_room_wait_3x3.html'">RELOAD</button>
-        <button class="play-btn" onclick="window.location.href='game_play_3x3.html'">Play</button>
+    <div class="joinroom">JOIN ROOM</div>
+
+    <div class="room">
+        <table class="room1">
+            <tr>
+                <td class="name_room">Name</td>
+                <td class="join_buttons" onclick="window.location.href='create_room_wait_3x3.html'">Join</td>
+            </tr>
+            <!--     <tr>
+                <td class="name_room">Name</td>
+                <td class="join_buttons" onclick="window.location.href='create_room_wait_3x3.html'">Join</td>
+            </tr>
+            <tr>
+                <td class="name_room">Name</td>
+                <td class="join_buttons" onclick="window.location.href='create_room_wait_3x3.html'">Join</td>
+            </tr>
+            <tr>
+                <td class="name_room">Name</td>
+                <td class="join_buttons" onclick="window.location.href='create_room_wait_3x3.html'">Join</td>
+            </tr>
+            <tr>
+                <td class="name_room">Name</td>
+                <td class="join_buttons" onclick="window.location.href='create_room_wait_3x3.html'">Join</td>
+            </tr>
+            <tr>
+                <td class="name_room">Name</td>
+                <td class="join_buttons" onclick="window.location.href='create_room_wait_3x3.html'">Join</td>
+            </tr>
+            <tr>
+                <td class="name_room">Name</td>
+                <td class="join_buttons" onclick="window.location.href='create_room_wait_3x3.html'">Join</td>
+            </tr>
+            <tr>
+                <td class="name_room">Name</td>
+                <td class="join_buttons" onclick="window.location.href='create_room_wait_3x3.html'">Join</td>
+            </tr>
+            <tr>
+                <td class="name_room">Name</td>
+                <td class="join_buttons" onclick="window.location.href='create_room_wait_3x3.html'">Join</td>
+            </tr> -->
+
+        </table>
+
     </div>
 
     <div class="playb" onclick="window.location.href='main.html'">
         << PLAY BACK</div>
+            <script src="auth.js"></script>
+            <script src="createroom.js"></script>
 
 
-            <script>
-            </script>
+
 </body>
 
 </html>

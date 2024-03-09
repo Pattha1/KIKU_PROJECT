@@ -5,20 +5,24 @@
     <link rel="icon" type="image/png" href="img/ICON.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Langar&display=swap" rel="stylesheet">
+    <title>KIKU - Create Room Wait</title>
+    <!-- Cool Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Langar&display=swap" rel="stylesheet">
-    <title>KIKU - Create Room Wait</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
 
+    <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-check-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
-
     <style>
         body {
             font-family: 'Langar', system-ui;
@@ -99,10 +103,19 @@
             margin: -5px 30px 50px 30px;
         }
         
-        .buttons button {
+        main {
+            display: contents;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0px 0px 10px;
+            text-align: center;
+        }
+        
+        .cta-buttons button {
             padding: 13px 40px;
             font-size: 20px;
             margin: 20px 40px 20px 40px;
+            cursor: pointer;
         }
         
         .reload-btn {
@@ -112,6 +125,7 @@
             color: white;
             border: none;
             padding: 10px 30px;
+            cursor: pointer;
         }
         
         .play-btn {
@@ -122,6 +136,7 @@
             color: white;
             border: none;
             padding: 10px 30px;
+            cursor: pointer;
         }
         
         .playb {
@@ -130,6 +145,7 @@
             text-align: right;
             color: #7E3300;
             margin: -3px 0px 10px 0px;
+            cursor: pointer;
         }
         
         .navbar {
@@ -140,143 +156,137 @@
         .nav {
             display: none;
         }
-        /* ----------------------------responsive - >992------------------------------- */
         
-        @media screen and (max-width: 992px) {
+        @media all and (max-width:992px) {
             .txt_score {
-                margin: 20px 0px 40px 0px;
-            }
-            .member_img {
-                margin: 10px 0px 0px 90px;
-                width: 120px;
-                height: 120px;
+                margin: 10px 0px 40px 0px;
+                width: 70%;
+                font-size: 40px;
+                color: #9E400C;
             }
             .profile_img {
-                margin: 10px 90px 0px 30px;
-                width: 120px;
-                height: 120px;
+                width: 130px;
+                height: 100px;
+                margin: 10px 300px 0px 30px;
             }
-            .member_txt {
-                margin: 10px 0px 30px 110px;
+            .member_img {
+                width: 130px;
+                height: 100px;
             }
-            .user-name {
-                margin: 10px 110px 30px 30px;
-            }
-            .playb {
-                margin: 10px 0px 10px 100px;
+            .profile_txt {
+                margin: -5px 300px 50px 30px;
             }
         }
-        /* ----------------------------responsive - >768------------------------------- */
         
-        @media screen and (max-width: 576px) {
+        @media all and (min-width:992px) {
             .txt_score {
-                margin: 20px 0px 40px 0px;
-            }
-            .member_img {
-                margin: 10px 0px 0px 90px;
-                width: 120px;
-                height: 120px;
+                margin: 10px 0px 40px 0px;
+                width: 80%;
+                font-size: 40px;
+                color: #9E400C;
             }
             .profile_img {
-                margin: 10px 140px 0px 30px;
-                width: 120px;
-                height: 120px;
+                width: 130px;
+                height: 130px;
+            }
+            .member_img {
+                width: 130px;
+                height: 130px;
+            }
+            .profile_txt {
+                margin: -5px 410px 50px 30px;
+            }
+        }
+        
+        @media all and (max-width:576px) {
+            .txt_score {
+                margin: 0px 0px 40px 0px;
+                width: 100%;
+                font-size: 50px;
+                text-align: center;
+                color: #7E3300;
+            }
+            .profile_img {
+                width: 130px;
+                height: 100px;
+                margin: 10px 100px 0px 30px;
+            }
+            .member_img {
+                width: 130px;
+                height: 100px;
+            }
+            .profile_txt {
+                margin: -5px 100px 20px 30px;
             }
             .member_txt {
-                margin: 10px 0px 30px 110px;
+                margin-bottom: 20px;
             }
-            .user-name {
-                margin: 10px 160px 30px 20px;
-            }
-            .buttons button {
+            main {
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 padding: 13px 40px;
-                font-size: 18px;
-                margin: 20px 20px 10px 50px;
+                font-size: 20px;
+                width: 50%;
+                margin: 0px 40px 0px 50px;
+            }
+            .reload-btn {
+                margin: 0px 80px 0px 0px;
+            }
+            .play-btn {
+                margin: 20px 0px;
             }
             .playb {
-                margin: 10px 0px 10px 10px;
+                width: 27%;
+                margin: 10px 20px 0px 230px;
+                float: right;
             }
         }
-        /* ----------------------------responsive - >576------------------------------- */
         
-        @media screen and (max-width: 576px) {
+        @media all and (max-width:320px) {
             .txt_score {
-                margin: 70px 50px 30px 0px;
-                font-size: 30px;
+                margin: 0px 0px 40px 0px;
+                width: 100%;
+                font-size: 40px;
+                text-align: center;
+                color: #7E3300;
+            }
+            .profile_img {
+                width: 90px;
+                height: 90px;
+                margin: 10px 35px 0px 30px;
             }
             .member_img {
-                margin: 10px 30px 0px 50px;
                 width: 90px;
                 height: 90px;
             }
-            .profile_img {
-                margin: 10px 50px 0px 30px;
-                width: 90px;
-                height: 90px;
-            }
-            img {
-                width: 95px;
-                height: 80px;
+            .profile_txt {
+                margin: -5px 45px 20px 30px;
             }
             .member_txt {
-                margin: 10px 50px 30px 80px;
-                padding: 5px 20px;
-                font-size: 14px;
+                margin-bottom: 20px;
             }
-            .user-name {
-                margin: 10px 50px 30px 40px;
-                padding: 5px 20px;
-                font-size: 14px;
-            }
-            .buttons button {
+            main {
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 padding: 13px 40px;
-                font-size: 15px;
-                margin: 50px 20px 0px 10px;
+                font-size: 20px;
+                width: 50%;
+                margin: 0px 40px 0px 50px;
+            }
+            .reload-btn {
+                font-size: 16px;
+                margin: 0px 80px 0px 0px;
+            }
+            .play-btn {
+                font-size: 16px;
+                margin: 13px 0px;
             }
             .playb {
-                margin: 20px 0px 50px 150px;
-                font-size: 12px;
-            }
-        }
-        /* ----------------------------responsive - >320------------------------------- */
-        
-        @media screen and (max-width: 320px) {
-            .txt_score {
-                margin: 60px 0px 30px 0px;
-                font-size: 28px;
-            }
-            .member_img {
-                margin: 10px 0px 0px 20px;
-                width: 80px;
-                height: 80px;
-            }
-            .profile_img {
-                margin: 10px 20px 0px 20px;
-                width: 80px;
-                height: 80px;
-            }
-            img {
-                width: 80px;
-                height: 75px;
-            }
-            .member_txt {
-                margin: 10px 20px 30px 25px;
-                padding: 5px 20px;
-                font-size: 14px;
-            }
-            #user-name {
-                margin: 10px 30px 30px 30px;
-                padding: 5px 20px;
-                font-size: 14px;
-            }
-            .buttons button {
-                padding: 13px 40px;
-                font-size: 15px;
-                margin: 20px 40px 0px 100px;
-            }
-            .playb {
-                margin: 30px 0px 50px 150px;
-                font-size: 12px;
+                width: 27%;
+                margin: 10px 20px 0px 230px;
+                float: right;
             }
         }
     </style>
@@ -296,6 +306,7 @@
             </nav>
         </div>
     </nav>
+
     <div class="txt_score">CREATE ROOM</div>
 
     <div class="bord-container">
@@ -308,22 +319,26 @@
     </div>
 
     <div class="txt-profile">
-        <div id="user-name"></div>
-        <div class="member_txt" id="joined-player-name">???</div>
 
+
+        <div id="user-name">NAME</div>
+        <div class="member_txt">???</div>
     </div>
 
-    <div class="buttons">
-        <button class="reload-btn" onclick="window.location.href='create_room_wait_3x3.html'">RELOAD</button>
-        <button class="play-btn" onclick="window.location.href='game_play_3x3.html'">Play</button>
-    </div>
+    <main>
+        <div class="cta-buttons">
+            <button class="reload-btn" onclick="window.location.href='login.html'">RELOAD</button>
+            <button class="play-btn" onclick="window.location.href='signup.html'">Play</button>
+
+        </div>
+    </main>
 
     <div class="playb" onclick="window.location.href='main.html'">
         << PLAY BACK</div>
+
             <script src="auth.js"></script>
             <script src="createroom.js"></script>
             <script src="test.js"></script>
-
 </body>
 
 </html>

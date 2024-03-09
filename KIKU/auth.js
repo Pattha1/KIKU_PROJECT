@@ -70,6 +70,7 @@ function register() {
                 },
                 width: 500,
             }).then(() => {
+
                 // Redirect to login page
                 location.href = "main.html";
             });
@@ -235,5 +236,5 @@ firebase.auth().onAuthStateChanged((user) => {
         });
     }
     console.log("User: ", user);
-    setupUI(user);
+    /* setupUI(user); */
 });
