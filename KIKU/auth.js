@@ -1,12 +1,13 @@
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyDZaBdJL0g2Ae5ZKexkbq2KVNKhQcHAcIQ",
-    authDomain: "login-kiku.firebaseapp.com",
-    databaseURL: "https://login-kiku-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "login-kiku",
-    storageBucket: "login-kiku.appspot.com",
-    messagingSenderId: "428492797804",
-    appId: "1:428492797804:web:d17f2f6a0162ceeef3a549",
-    measurementId: "G-LE6BYXM09G"
+    apiKey: "AIzaSyDsW08DIwebcxd86TD975uiD1XC9GiLph4",
+    authDomain: "web-design-javascript-la-eef5f.firebaseapp.com",
+    databaseURL: "https://web-design-javascript-la-eef5f-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "web-design-javascript-la-eef5f",
+    storageBucket: "web-design-javascript-la-eef5f.appspot.com",
+    messagingSenderId: "1031435415549",
+    appId: "1:1031435415549:web:4bc391bed0fdcaa5d63394",
+    measurementId: "G-C9F8J3J5H8"
 };
 firebase.initializeApp(firebaseConfig);
 
@@ -20,7 +21,8 @@ function register() {
     // Get all our input fields
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    const username = document.getElementById('username').value;
+    // const username = document.getElementById('username').value;
+    var displayName = document.getElementById('username').value;
     const confirm_password = document.getElementById('confirm_password').value;
 
     // Validate input fields
@@ -29,7 +31,7 @@ function register() {
         return;
         // Don't continue running the code
     }
-    if (validate_field(username) == false) {
+    if (validate_field(displayName) == false) {
         showAlert('Please Enter username', 'error');
         return;
     }
@@ -48,11 +50,14 @@ function register() {
 
             // Add this user to Firebase Database
             const database_ref = database.ref();
+            user.updateProfile({
+                displayName: displayName
+            })
 
             // Create User data
             const user_data = {
                 email: email,
-                username: username,
+                displayName: displayName,
                 confirm_password: confirm_password,
                 last_login: Date.now()
             };
@@ -72,7 +77,7 @@ function register() {
             }).then(() => {
 
                 // Redirect to login page
-                location.href = "main.html";
+                location.href = "main.html?displayName=" + encodeURIComponent(displayName);
             });
         })
         .catch((error) => {
@@ -95,14 +100,7 @@ function login() {
         showAlert('Email or Password is Outta Line!!', 'error')
         return
     }
-    // Move on with Auth
-    // auth.fetchSignInMethodsForEmail(email)
-    //     .then((signInMethods) => {
-    //         if (signInMethods.length === 0) {
-    //             showAlert('Email is not registered', 'error');
-    //         }
-    //             // Move on with Auth and try to sign in
-    //     })
+
     auth.signInWithEmailAndPassword(email, password)
         .then(function() {
             // Declare user variable
@@ -127,10 +125,11 @@ function login() {
                 text: 'Login complete',
 
             }).then(() => {
-                location.href = "main.html";
+                var displayName = user.displayName;
+                location.href = "main.html?displayName=" + encodeURIComponent(displayName);
             })
             user.updateProfile({
-                    displayName: username,
+                    displayName: displayName,
                 }).then(function() {
                     console.log(user.displayName);
                 })
@@ -158,7 +157,6 @@ function showAlert(message, type) {
     var alertContainer = document.getElementById('alert-container');
     alertContainer.innerHTML = `<div class="alert ${type}">${message}</div>`;
 
-    // Clear the alert after a certain duration (e.g., 5 seconds)
     setTimeout(() => {
         alertContainer.innerHTML = '';
     }, 5000);
@@ -203,8 +201,7 @@ const btnLogout = document.querySelector("#btnLogOut");
 btnLogout.addEventListener("click", function() {
     Swal.fire({
         title: "Are you sure?",
-        // text: "You won't be able to revert this!",
-        // icon: "warning",
+
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
@@ -228,9 +225,9 @@ firebase.auth().onAuthStateChanged((user) => {
         userNameRef.once("value", (snapshot) => {
             var data = snapshot.val();
             console.log(data);
-            document.querySelector('#user-name').innerHTML = data;
+            document.querySelector('#user-name').innerHTML = user.displayName;
             document.querySelector("#user-profile-name").innerHTML = user.email;
-            document.querySelector('#user-name2').innerHTML = data;
+            document.querySelector('#user-name2').innerHTML = user.displayName;
 
 
         });

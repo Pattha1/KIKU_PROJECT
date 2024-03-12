@@ -1,99 +1,206 @@
-// let currentPlayer = 'X';
-// let board = [
-//     ['', '', '', ''],
-//     ['', '', '', ''],
-//     ['', '', '', ''],
-//     ['', '', '', '']
-// ];
-// let timeLeftX = 10; // เวลาที่เหลือของ Player X
-// let timeLeftO = 10; // เวลาที่เหลือของ Player O
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyDsW08DIwebcxd86TD975uiD1XC9GiLph4",
+    authDomain: "web-design-javascript-la-eef5f.firebaseapp.com",
+    databaseURL: "https://web-design-javascript-la-eef5f-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "web-design-javascript-la-eef5f",
+    storageBucket: "web-design-javascript-la-eef5f.appspot.com",
+    messagingSenderId: "1031435415549",
+    appId: "1:1031435415549:web:4bc391bed0fdcaa5d63394",
+    measurementId: "G-C9F8J3J5H8"
+};
+firebase.initializeApp(firebaseConfig);
 
-// function startTimer() {
-//     setInterval(() => {
-//         if (currentPlayer === 'X') {
-//             timeLeftX--;
-//             if (timeLeftX === 0) {
-//                 currentPlayer = 'O';
-//                 timeLeftX = 10;
-//             }
-//         } else {
-//             timeLeftO--;
-//             if (timeLeftO === 0) {
-//                 currentPlayer = 'X';
-//                 timeLeftO = 10;
-//             }
-//         }
-//         // อัปเดต UI ให้แสดงเวลาที่เหลือ
-//         document.querySelector('.time_to_play').innerText = `00:${currentPlayer === 'X' ? timeLeftX : timeLeftO}`;
-//     }, 1000);
-// }
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        const currentUser = firebase.auth().currentUser;
+        loadGame(currentUser);
+    } else {
+        window.location.href = "login.html";
+    }
+});
 
-// function placeMarker(row, col) {
-//     if (board[row][col] === '') {
-//         board[row][col] = currentPlayer;
-//         document.querySelector(`.sub:nth-child(${row + 1}) .square:nth-child(${col + 1})`).innerText = currentPlayer;
-//         if (checkWin()) {
-//             document.getElementById('popupw').style.display = 'block';
-//             document.querySelector('.win').innerText = 'WIN !!!';
-//             document.querySelector('.win_img').src = 'img/10.png';
-//             document.querySelector('.player_win').innerText = `Player ${currentPlayer}`;
-//         } else {
-//             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-//         }
-//         // เพิ่มโค้ดตรวจสอบการแพ้ที่นี่
-//         if (checkDraw()) {
-//             document.getElementById('popupD').style.display = 'block';
-//             document.querySelector('.draw').innerText = 'DRAW !!!';
-//             document.querySelector('.win_img').src = 'img/draw.png';
-//             document.querySelector('.player_draw').innerText = 'You Draw'; // ไม่มีผู้เล่นที่ชนะ
-//             clearTimeout(timer); // หยุดการนับเวลาเมื่อเกมจบ
-//         }
-//     }
-// }
+function loadGame(currentUser) {
+    const roomId = new URLSearchParams(window.location.search).get('roomId');
+    const roomsRef = firebase.database().ref('rooms');
 
-// function checkWin() {
-//     // Check rows
-//     for (let i = 0; i < 4; i++) {
-//         if (board[i][0] !== '' && board[i][0] === board[i][1] && board[i][0] === board[i][2] && board[i][0] === board[i][3]) {
-//             return true;
-//         }
-//     }
-//     // Check columns
-//     for (let i = 0; i < 4; i++) {
-//         if (board[0][i] !== '' && board[0][i] === board[1][i] && board[0][i] === board[2][i] && board[0][i] === board[3][i]) {
-//             return true;
-//         }
-//     }
-//     // Check diagonals
-//     if (board[0][0] !== '' && board[0][0] === board[1][1] && board[0][0] === board[2][2] && board[0][0] === board[3][3]) {
-//         return true;
-//     }
-//     if (board[0][3] !== '' && board[0][3] === board[1][2] && board[0][3] === board[2][1] && board[0][3] === board[3][0]) {
-//         return true;
-//     }
-//     return false;
-// }
+    roomsRef.on('value', (snapshot) => {
+        const rooms = snapshot.val();
 
-// function checkTie() {
-//     for (let i = 0; i < 4; i++) {
-//         for (let j = 0; j < 4; j++) {
-//             if (board[i][j] === '') {
-//                 return false;
-//             }
-//         }
-//     }
-//     return true;
-// }
+        for (const key in rooms) {
+            if (rooms.hasOwnProperty(key)) {
+                const roomData = rooms[key];
+                if (roomData.roomId === roomId) {
+                    const player1 = roomData.player1;
+                    const player2 = roomData.player2;
+                    document.querySelector('.user-1').textContent = player1.displayName;
+                    document.querySelector('.user-2').textContent = player2.displayName;
+                    const gameBoard = document.querySelector('.board');
 
-// function resetBoard() {
-//     board = [
-//         ['', '', '', ''],
-//         ['', '', '', ''],
-//         ['', '', '', ''],
-//         ['', '', '', '']
-//     ];
-//     document.querySelectorAll('.square').forEach(square => square.innerText = '');
-//     currentPlayer = 'X';
-// }
+                    if (Array.isArray(roomData.gameBoard)) {
+                        const cells = gameBoard.querySelectorAll('.table-col');
+                        cells.forEach((cell, index) => {
+                            cell.querySelector('p').textContent = roomData.gameBoard[index];
+                        });
 
-// window.onload = startTimer;
+                        cells.forEach(cell => {
+                            cell.addEventListener('click', () => {
+                                makeMove(currentUser, cell, roomId);
+                            });
+                        });
+                    } else {
+                        console.error("Invalid game board data:", roomData.gameBoard);
+                    }
+                    break;
+                }
+            }
+        }
+    }, (error) => {
+        console.error("Error retrieving room data: ", error);
+    });
+}
+
+let isMakingMove = false;
+let alertedCell = false;
+
+function makeMove(currentUser, cell, roomId) {
+    if (isMakingMove) {
+        return;
+    }
+    isMakingMove = true;
+
+    const row = parseInt(cell.id.split("-")[1]);
+    const col = parseInt(cell.id.split("-")[3]);
+    const cellIndex = 4 * (row - 1) + (col - 1);
+
+    const roomsRef = firebase.database().ref('rooms');
+
+    roomsRef.once('value').then((snapshot) => {
+        const rooms = snapshot.val();
+
+        for (const key in rooms) {
+            if (rooms.hasOwnProperty(key)) {
+                const roomData = rooms[key];
+                if (roomData.roomId === roomId) {
+                    const gameBoard = roomData.gameBoard || Array(16).fill('');
+
+                    if (gameBoard[cellIndex] === '') {
+                        const isPlayer1Turn = roomData.currentTurn === roomData.player1.uid;
+
+                        if ((isPlayer1Turn && currentUser.uid === roomData.player1.uid) ||
+                            (!isPlayer1Turn && currentUser.uid === roomData.player2.uid)) {
+
+                            const symbol = isPlayer1Turn ? 'X' : 'O';
+                            const updatedGameBoard = [...gameBoard];
+                            updatedGameBoard[cellIndex] = symbol;
+
+                            cell.querySelector('p').textContent = symbol;
+
+                            roomsRef.child(key).update({
+                                gameBoard: updatedGameBoard,
+                                currentTurn: isPlayer1Turn ? roomData.player2.uid : roomData.player1.uid
+                            }).then(() => {
+                                const winner = checkWinner(updatedGameBoard);
+                                if (winner) {
+                                    if (winner === 'draw') {
+                                        alert("You draw!");
+                                        deleteRoomFromFirebase(key);
+                                        toLobby();
+                                    } else {
+                                        const popup = document.getElementById('popupw');
+                                        const playerWin = document.querySelector('.player_win');
+                                        playerWin.textContent = symbol + " Name";
+                                        popup.style.display = "block";
+                                        deleteRoomFromFirebase(key);
+                                    }
+                                }
+
+                                isMakingMove = false;
+                                alertedCell = false;
+                            }).catch((error) => {
+                                console.error("Error updating game board: ", error);
+                                isMakingMove = false;
+                                alertedCell = false;
+                            });
+                        } else {
+                            alert("It's not your turn!");
+                            isMakingMove = false;
+                            alertedCell = false;
+                        }
+                    } else {
+                        if (!alertedCell) {
+                            alert("Cell filled!");
+                            alertedCell = true;
+                        }
+                        isMakingMove = false;
+                    }
+                    break;
+                }
+            }
+        }
+    }).catch((error) => {
+        console.error("Error making move: ", error);
+        isMakingMove = false;
+        alertedCell = false;
+    });
+}
+
+function deleteRoomFromFirebase(roomKey) {
+    const roomsRef = firebase.database().ref('rooms');
+    roomsRef.child(roomKey).remove()
+        .then(() => {
+            console.log("Room deleted successfully!");
+        })
+        .catch((error) => {
+            console.error("Error deleting room: ", error);
+        });
+}
+
+
+
+function checkWinner(board) {
+    const winningCombos = [
+        [0, 1, 2, 3],
+        [4, 5, 6, 7],
+        [8, 9, 10, 11],
+        [12, 13, 14, 15],
+        [0, 4, 8, 12],
+        [1, 5, 9, 13],
+        [2, 6, 10, 14],
+        [3, 7, 11, 15],
+        [0, 5, 10, 15],
+        [3, 6, 9, 12]
+    ];
+
+    for (let i = 0; i < winningCombos.length; i++) {
+        const [a, b, c, d] = winningCombos[i];
+        if (board[a] && board[a] === board[b] && board[a] === board[c] && board[a] === board[d]) {
+            return board[a];
+        }
+    }
+
+    if (!board.includes('')) {
+        return 'draw';
+    }
+
+    return null;
+}
+
+function checkTie() {
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            if (board[i][j] === '') {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+
+
+
+
+function toLobby() {
+    window.location.href = "lobby_4x4.html";
+}

@@ -9,10 +9,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Langar&display=swap" rel="stylesheet">
     <title>KIKU - Play</title>
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+
+    <!-- Bootstrap stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
     <style>
         body {
-            font-family: 'Langar', system-ui;
-            background-color: #FFC909;
+            font-family: "Langar", system-ui;
+            background-color: #ffc909;
             margin: 0;
             padding: 0;
             display: flex;
@@ -34,9 +44,9 @@
             justify-content: center;
             align-items: center;
             border-radius: 50%;
-            width: 70px;
-            height: 70px;
-            border: 3px solid #7E3300;
+            width: 90px;
+            height: 90px;
+            border: 3px solid #7e3300;
             background-color: #ffffff;
             margin: 10px 900px 0px 30px;
         }
@@ -46,8 +56,8 @@
             justify-content: center;
             align-items: center;
             border-radius: 50%;
-            width: 70px;
-            height: 70px;
+            width: 90px;
+            height: 90px;
             border: 3px solid #000000;
             background-color: #ffffff;
             margin: 10px 30px 0px 30px;
@@ -60,24 +70,26 @@
             margin: 10px;
         }
         
-        .profile_txt {
+        .user-1 {
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 0px 30px;
             border-radius: 8px;
-            color: #7E3300;
-            margin: -10px 900px 0px 30px;
+            color: #ffffff;
+            margin: -10px 456px 0px 30px;
+            background-color: #7e3300;
         }
         
-        .member_txt {
+        .user-2 {
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 0px 30px;
             border-radius: 8px;
-            color: #7E3300;
+            color: #fff;
             margin: -10px 30px 0px 10px;
+            background-color: #7e3300;
         }
         
         .time {
@@ -89,7 +101,16 @@
         .time_to_play {
             display: flex;
             align-items: center;
-            justify-content: center
+            justify-content: center;
+            margin-top: 25px;
+        }
+        
+        .text_play {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 5px 0px;
+            font-size: 20px;
         }
         
         .player {
@@ -102,34 +123,16 @@
         .playerXmember {
             display: flex;
             align-items: center;
-            justify-content: center
+            justify-content: center;
         }
         
-        .play {
+        .board {
             margin-top: 10px;
             border: 2px solid #000;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-        }
-        
-        .sub {
-            display: flex;
-            flex-direction: row;
-            background-color: #ffffff;
-        }
-        
-        .square {
-            width: 100px;
-            height: 100px;
-            border: 2px solid #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 48px;
-            line-height: 1;
-            cursor: pointer;
         }
         
         .popupw-container {
@@ -141,8 +144,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #10d1b4;
-            /* เปลีี่ยนสีการชนะ!!! */
+            background-color: #34ff78;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             z-index: 999;
@@ -187,6 +189,7 @@
             width: 50px;
             height: 40px;
             margin: 20px 30px 0px 30px;
+            cursor: pointer;
         }
         
         #select_icon_1w,
@@ -194,6 +197,7 @@
         #select_icon_3w {
             width: 100%;
             height: 100%;
+            cursor: pointer;
         }
         
         .popupl-container {
@@ -205,7 +209,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #FA3838;
+            background-color: #fa3838;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             z-index: 999;
@@ -280,7 +284,7 @@
             height: 20%;
             border-radius: 8px;
             border: 2px solid #950303;
-            background-color: #B70303;
+            background-color: #b70303;
             font-size: 20px;
             color: #fff;
         }
@@ -299,32 +303,78 @@
         
         .popup-button {
             padding: 10px;
-            background-color: #B70303;
+            background-color: #b70303;
             color: #fff;
             border-radius: 8px;
             cursor: pointer;
         }
         
-        .jod {
+        #jod {
             width: 100%;
             height: 10%;
             font-size: 25px;
-            color: #B70303;
+            color: #b70303;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 30px 0px;
         }
         
-        @media all and (max-width:992px) {
+        .board {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 2px solid #000;
+            padding: 10px;
+            border-radius: 0px;
+            background-color: #000;
+        }
+        
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .col {
+            flex: 1;
+            min-width: 130px;
+            height: 130px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #000;
+            cursor: pointer;
+            background-color: #fff;
+        }
+        
+        .col:hover {
+            background-color: #ffff99;
+        }
+        
+        .table-col p {
+            margin: 0;
+            font-size: 3rem;
+            color: #000;
+        }
+        
+        .playb {
+            width: 30%;
+            font-size: 16px;
+            text-align: right;
+            color: #7E3300;
+            margin: 15px 0px 10px 0px;
+            cursor: pointer;
+        }
+        
+        @media all and (max-width: 992px) {
             .bord-container {
                 width: 50%;
             }
             .profile_img {
                 margin: 10px 150px 0px 30px;
             }
-            .profile_txt {
-                margin: -10px 160px 0px 30px;
+            .user-1 {
+                margin: -10px 200px 0px 30px;
             }
             .mini-popup-container {
                 width: 35%;
@@ -332,15 +382,15 @@
             }
         }
         
-        @media all and (min-width:992px) {
+        @media all and (min-width: 992px) {
             .bord-container {
                 width: 50%;
             }
             .profile_img {
                 margin: 10px 400px 0px 30px;
             }
-            .profile_txt {
-                margin: -10px 410px 0px 30px;
+            .user-1 {
+                margin: -10px 456px 0px 30px;
             }
             .mini-popup-container {
                 width: 30%;
@@ -348,43 +398,61 @@
             }
         }
         
-        @media all and (max-width:576px) {
+        @media all and (max-width: 576px) {
             .bord-container {
                 width: 50%;
             }
             .profile_img {
                 margin: 10px 100px 0px 30px;
             }
-            .profile_txt {
-                margin: -10px 110px 0px 30px;
+            .user-1 {
+                margin: -10px 134px 0px 30px;
+            }
+            .square {
+                width: 70px;
+                height: 70px;
             }
             .mini-popup-container {
                 width: 40%;
                 height: 30%;
             }
-            .jod {
+            #jod {
                 font-size: 20px;
                 padding: 20px 0px;
             }
+            .col {
+                min-width: 100px;
+                height: 100px;
+            }
+            .playb {
+                width: 55%;
+            }
         }
         
-        @media all and (max-width:320px) {
+        @media all and (max-width: 320px) {
             .bord-container {
                 width: 50%;
             }
             .profile_img {
                 margin: 10px 80px 0px 30px;
             }
-            .profile_txt {
+            .user-1 {
                 margin: -10px 90px 0px 30px;
             }
             .square {
-                width: 80px;
-                height: 80px;
+                width: 60px;
+                height: 60px;
             }
             .mini-popup-container {
                 width: 60%;
                 height: 30%;
+            }
+            .col {
+                min-width: 80px;
+                height: 80px;
+            }
+            .playb {
+                width: 80%;
             }
         }
     </style>
@@ -400,165 +468,95 @@
         </div>
     </div>
 
+
     <div class="txt-profile">
-        <div class="profile_txt">Name</div>
-        <div class="member_txt">Name</div>
+        <div class="user-1"></div>
+        <div class="user-2"></div>
     </div>
 
-    <div class="time">
-        <div id="time_to_play" class="time_to_play" onclick="window.location.href='mini_game_plus_3x3.html'">00:10</div>
+    <div class="text_play">KIKU Tic Tac Toe</div>
+
+
+    <div class="h2 text-center" id="game_text">
+
     </div>
 
-    <div class="player">
-        <div class="playerXmember">Player X Member</div>
-    </div>
-
-    <div class="play">
-        <!-- Tic Tac Toe Board -->
-        <div class="sub">
-            <div class="square" onclick="placeMarker(0, 0)"></div>
-            <div class="square" onclick="placeMarker(0, 1)"></div>
-            <div class="square" onclick="placeMarker(0, 2)"></div>
-        </div>
-        <div class="sub">
-            <div class="square" onclick="placeMarker(1, 0)"></div>
-            <div class="square" onclick="placeMarker(1, 1)"></div>
-            <div class="square" onclick="placeMarker(1, 2)"></div>
-        </div>
-        <div class="sub">
-            <div class="square" onclick="placeMarker(2, 0)"></div>
-            <div class="square" onclick="placeMarker(2, 1)"></div>
-            <div class="square" onclick="placeMarker(2, 2)"></div>
-        </div>
-    </div>
-
-    <div id="popupw" class="popupw-container">
-        <img class="win_img" src="img/10.png" alt="win_Picture">
-        <div class="player_win">X Name</div>
-        <div class="win">WIN !!!</div>
-        <div class="selectW">
-            <div class="icon1w">
-                <img onclick="window.location.href='game_play_3X3.html'" id="select_icon_1w" src="img/11.png" alt="bord3x3 Picture" width="100px" height="100px">
+    <div class="board">
+        <div class="row border border-secondary" id="row-1">
+            <div class="col border justify-content-center align-items-center table-col border border-secondary d-flex" id="row-1-col-1">
+                <p class="display-4 text-center"></p>
             </div>
-            <div class="icon2w">
-                <img onclick="window.location.href='main.html'" id="select_icon_2w" src="img/12.png" alt="bord4x4 Picture" width="100px" height="100px">
+            <div class="col border justify-content-center align-items-center table-col border border-secondary d-flex" id="row-1-col-2">
+                <p class="display-4 text-center"></p>
             </div>
-            <div class="icon3w">
-                <img onclick="window.location.href='main.html'" id="select_icon_3w" src="img/13.png" alt="bord5x5 Picture" width="100px" height="100px">
+            <div class="col border justify-content-center align-items-center table-col border border-secondary d-flex" id="row-1-col-3">
+                <p class="display-4 text-center"></p>
             </div>
         </div>
-    </div>
-
-    <div id="popupl" class="popupl-container">
-        <img class="lose_img" src="img/15.png" alt="win_Picture">
-        <div class="player_lose">X Name</div>
-        <div class="lose">LOSE !!!</div>
-        <div class="selectL">
-            <div class="icon1L">
-                <img onclick="window.location.href='game_play_3X3.html'" id="select_icon_1L" src="img/11.png" alt="bord3x3 Picture" width="100px" height="100px">
+        <div class="row border border-secondary" id="row-2">
+            <div class="col border justify-content-center align-items-center table-col border border-secondary d-flex" id="row-2-col-1">
+                <p class="display-4 text-center"></p>
             </div>
-            <div class="icon2L">
-                <img onclick="window.location.href='main.html'" id="select_icon_2L" src="img/12.png" alt="bord4x4 Picture" width="100px" height="100px">
+            <div class="col border justify-content-center align-items-center table-col border border-secondary d-flex" id="row-2-col-2">
+                <p class="display-4 text-center"></p>
+            </div>
+            <div class="col border justify-content-center align-items-center table-col border border-secondary d-flex" id="row-2-col-3">
+                <p class="display-4 text-center"></p>
+            </div>
+        </div>
+        <div class="row border border-secondary" id="row-3">
+            <div class="col border justify-content-center align-items-center table-col border border-secondary d-flex" id="row-3-col-1">
+                <p class="display-4 text-center"></p>
+            </div>
+            <div class="col border justify-content-center align-items-center table-col border border-secondary d-flex" id="row-3-col-2">
+                <p class="display-4 text-center"></p>
+            </div>
+            <div class="col border justify-content-center align-items-center table-col border border-secondary d-flex" id="row-3-col-3">
+                <p class="display-4 text-center"></p>
             </div>
         </div>
     </div>
 
-    <div id="popup" class="mini-popup-container">
-        <div class="mini-math">Quiz Math</div>
-        <div class="jod">4+10+12+9+7+3+1</div>
-        <label for="answer" class="popup-input"></label>
-        <input type="text" id="answer" class="popup-input"><br>
-        <button onclick="submitAnswer()" class="popup-button">Answer</button>
-    </div>
+    <div class="playb" onclick="window.location.href='main.html'">
+        << PLAY BACK</div>
 
-    <!-- <script>
-        let currentPlayer = 'X';
-        let board = [
-            ['', '', ''],
-            ['', '', ''],
-            ['', '', '']
-        ];
 
-        let decisionTime = 10; // 10 วินาทีต่อการตัดสินใจ
-        let timer; // ตัวแปรเก็บเวลา
+            <div id="popupw" class="popupw-container">
+                <img class="win_img" src="img/10.png" alt="win_Picture">
+                <div class="player_win">X Name</div>
+                <div class="win">WIN !!!</div>
+                <div class="selectW">
 
-        function placeMarker(row, col) {
-            if (board[row][col] === '') {
-                board[row][col] = currentPlayer;
-                document.querySelector(`.sub:nth-child(${row + 1}) .square:nth-child(${col + 1})`).innerText = currentPlayer;
-                if (checkWin()) {
-                    document.getElementById('popupw').style.display = 'block';
-                    document.querySelector('.win').innerText = 'WIN !!!';
-                    document.querySelector('.win_img').src = 'img/10.png';
-                    document.querySelector('.player_win').innerText = `Player ${currentPlayer}`;
-                    clearTimeout(timer); // หยุดการนับเวลาเมื่อเกมจบ
-                } else {
-                    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                    startDecisionTimer(); // เริ่มนับเวลาตัดสินใจของผู้เล่นใหม่
-                }
-            }
-        }
+                    <div class="icon2w">
+                        <img onclick="window.location.href='main.html'" id="select_icon_2w" src="img/12.png" alt="bord4x4 Picture" width="100px" height="100px">
+                    </div>
 
-        function startDecisionTimer() {
-            let timeLeft = decisionTime;
-            document.querySelector('.time_to_play').innerText = `00:${timeLeft < 10 ? '0' : ''}${timeLeft}`; // แสดงเวลาที่เหลือ
+                </div>
+            </div>
 
-            timer = setInterval(() => {
-                timeLeft--;
-                document.querySelector('.time_to_play').innerText = `00:${timeLeft < 10 ? '0' : ''}${timeLeft}`; // แสดงเวลาที่เหลือ
+            <div id="popupl" class="popupl-container">
+                <img class="lose_img" src="img/15.png" alt="win_Picture">
+                <div class="player_lose">X Name</div>
+                <div class="lose">LOSE !!!</div>
+                <div class="selectL">
 
-                if (timeLeft === 0) {
-                    clearInterval(timer); // หยุดการนับเวลาเมื่อหมดเวลา
-                    currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // เปลี่ยนเป็นตาของผู้เล่นต่อไป
-                    startDecisionTimer(); // เริ่มนับเวลาสำหรับผู้เล่นถัดไป
-                }
-            }, 1000);
-        }
+                    <div class="icon2L">
+                        <img onclick="window.location.href='main.html'" id="select_icon_2L" src="img/12.png" alt="bord4x4 Picture" width="100px" height="100px">
+                    </div>
+                </div>
+            </div>
 
-        function checkWin() {
-            // Check rows
-            for (let i = 0; i < 3; i++) {
-                if (board[i][0] !== '' && board[i][0] === board[i][1] && board[i][0] === board[i][2]) {
-                    return true;
-                }
-            }
-            // Check columns
-            for (let i = 0; i < 3; i++) {
-                if (board[0][i] !== '' && board[0][i] === board[1][i] && board[0][i] === board[2][i]) {
-                    return true;
-                }
-            }
-            // Check diagonals
-            if (board[0][0] !== '' && board[0][0] === board[1][1] && board[0][0] === board[2][2]) {
-                return true;
-            }
-            if (board[0][2] !== '' && board[0][2] === board[1][1] && board[0][2] === board[2][0]) {
-                return true;
-            }
-            return false;
-        }
+            <div id="popup" class="mini-popup-container">
+                <div class="mini-math">Quiz Math</div>
+                <div id="jod"></div>
+                <label for="answer" class="popup-input"></label>
+                <input type="text" id="answer" class="popup-input"><br>
+                <button onclick="submitAnswer()" class="popup-button">Answer</button>
+            </div>
 
-        function checkDraw() {
-            for (let i = 0; i < 3; i++) {
-                for (let j = 0; j < 3; j++) {
-                    if (board[i][j] === '') {
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
 
-        function resetBoard() {
-            board = [
-                ['', '', ''],
-                ['', '', ''],
-                ['', '', '']
-            ];
-            document.querySelectorAll('.square').forEach(square => square.innerText = '');
-            currentPlayer = 'X';
-        }
-    </script> -->
+            <script src="game3x3.js"></script>
+            <script src="auth.js"></script>
 </body>
 
 </html>
